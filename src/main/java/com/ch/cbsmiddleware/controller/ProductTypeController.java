@@ -1,6 +1,7 @@
 package com.ch.cbsmiddleware.controller;
 
 import com.ch.cbsmiddleware.dto.response.HttpResponse;
+import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.ProductTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
  * @project cbs-middleware
  */
 @RestController
-@RequiredArgsConstructor
-public class ProductTypeController {
+public class ProductTypeController extends BaseController{
 
     private final ProductTypeService productTypeService;
+
+    public ProductTypeController(ResponseGenerator responseGenerator, ProductTypeService productTypeService) {
+        super(responseGenerator);
+        this.productTypeService = productTypeService;
+    }
 
     @GetMapping("list-product-types")
     public ResponseEntity<?> listProductTypesOfClient(@RequestParam("cbsClientCode") String cbsClientCode ){
         return ResponseEntity.ok(
-                HttpResponse.getSuccessResponse("List of all products", productTypeService.listProductTypesOfClient(cbsClientCode))
+                responseGenerator.getSuccessResponse("product-types.list.retrieve.success", productTypeService.listProductTypesOfClient(cbsClientCode))
         );
     }
 }

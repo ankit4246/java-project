@@ -2,6 +2,7 @@ package com.ch.cbsmiddleware.controller;
 
 import com.ch.cbsmiddleware.dto.request.VoucherRequest;
 import com.ch.cbsmiddleware.dto.response.HttpResponse;
+import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.VoucherRequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
  * @project cbs-middleware
  */
 @RestController
-@RequiredArgsConstructor
-public class VoucherRequestController {
+public class VoucherRequestController extends BaseController{
 
     private final VoucherRequestService voucherRequestService;
+
+    public VoucherRequestController(ResponseGenerator responseGenerator, VoucherRequestService voucherRequestService) {
+        super(responseGenerator);
+        this.voucherRequestService = voucherRequestService;
+    }
 
     @PostMapping("/request-voucher")
     public ResponseEntity<?> requestVoucher(@RequestBody VoucherRequest request){
         return ResponseEntity.ok(
-                HttpResponse.getSuccessResponse("Voucher requested", voucherRequestService.requestVoucher(request))
+                responseGenerator.getSuccessResponse("voucher.request.success", voucherRequestService.requestVoucher(request))
         );
     }
 }

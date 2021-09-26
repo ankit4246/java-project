@@ -2,6 +2,7 @@ package com.ch.cbsmiddleware.controller;
 
 import com.ch.cbsmiddleware.dto.request.TransactionRequest;
 import com.ch.cbsmiddleware.dto.response.HttpResponse;
+import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.TransactionRequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
  * @project cbs-middleware
  */
 @RestController
-@RequiredArgsConstructor
-public class TransactionRequestController {
+public class TransactionRequestController extends BaseController{
 
     private final TransactionRequestService transactionRequestService;
+
+    public TransactionRequestController(ResponseGenerator responseGenerator, TransactionRequestService transactionRequestService) {
+        super(responseGenerator);
+        this.transactionRequestService = transactionRequestService;
+    }
 
     @PostMapping("/transaction-request")
     public ResponseEntity<?> requestTransaction(@RequestBody TransactionRequest request){
         return ResponseEntity.ok(
-                HttpResponse.getSuccessResponse("Transaction requested", transactionRequestService.requestTransaction(request))
+                responseGenerator.getSuccessResponse("transaction.request.success", transactionRequestService.requestTransaction(request))
         );
     }
 }
