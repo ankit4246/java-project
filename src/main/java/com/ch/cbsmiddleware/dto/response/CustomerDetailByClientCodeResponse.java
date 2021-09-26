@@ -1,6 +1,7 @@
 package com.ch.cbsmiddleware.dto.response;
 
 import lombok.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * @Project cbs-middleware
@@ -11,10 +12,15 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class CustomerDetailResponse {
+public class CustomerDetailByClientCodeResponse {
+    @NotNull
     private String customerCode;
+    @NotNull
     private String customerName;
+    @NotNull
     private String address;
+    @NotNull
     private String mobileNumber;
+    @NotNull
     private String branchCode;
 }
