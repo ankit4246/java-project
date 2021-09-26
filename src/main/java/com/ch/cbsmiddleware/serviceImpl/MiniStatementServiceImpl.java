@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @Project cbs-middleware
- * @Author mave on 9/26/21
+ * @Author Om Narayan Singh on 9/26/21
  */
 @Service
 public class MiniStatementServiceImpl implements MiniStatementService {

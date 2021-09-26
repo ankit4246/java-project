@@ -17,11 +17,11 @@ public class BalanceEnquiryByCustomerCodeResponse {
     @NotNull
     private String accountNumber;
     @NotNull
-    private Number availableBalance;
+    private Integer availableBalance;
     @NotNull
-    private Number ledgerBalance;
+    private Integer ledgerBalance;
     @NotNull
-    private Number InterestRate;
+    private Integer InterestRate;
     @NotNull
     private String accountStatus;
 }

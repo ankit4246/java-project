@@ -24,7 +24,7 @@ public class FullStatementRequest {
     @NotNull
     private Date toDate;
     @NotNull
-    private Number pageLimit;
+    private Integer pageLimit;
     @NotNull
-    private Number pageOffset;
+    private Integer pageOffset;
 }

@@ -40,12 +40,13 @@ public class BalanceEnquiryServiceImpl implements BalanceEnquiryService {
 
     @Override
     public BalanceEnquiryByAccountNumberResponse getBalanceByAccountNumber(BalanceEnquiryByAccountNumberRequest balanceEnquiryByAccountNumberRequest) {
-        BalanceEnquiryByAccountNumberResponse balanceEnquiryByAccountNumberResponse = new BalanceEnquiryByAccountNumberResponse();
-        balanceEnquiryByAccountNumberResponse.setAccountNumber("accNum101");
-        balanceEnquiryByAccountNumberResponse.setAvailableBalance(10000);
-        balanceEnquiryByAccountNumberResponse.setLedgerBalance(10000);
-        balanceEnquiryByAccountNumberResponse .setInterestRate(2);
-        balanceEnquiryByAccountNumberResponse.setAccountStatus("sttus101");
+        BalanceEnquiryByAccountNumberResponse balanceEnquiryByAccountNumberResponse = new BalanceEnquiryByAccountNumberResponse(
+                "acntNo101",
+                10000,
+                1000,
+                10,
+                "status101"
+        );
 
         return balanceEnquiryByAccountNumberResponse;
     }

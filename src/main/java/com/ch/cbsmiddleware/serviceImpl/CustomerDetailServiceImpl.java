@@ -19,36 +19,34 @@ public class CustomerDetailServiceImpl implements CustomerDetailService {
 
     @Override
     public CustomerDetailByCustomerCodeResponse getCustomerDetailByCustomerCode(CustomerDetailByCustomerCodeRequest customerDetailByCustomerCodeRequest) {
-        CustomerDetailByCustomerCodeResponse customerDetailByCustomerCodeResponse = new CustomerDetailByCustomerCodeResponse();
-        customerDetailByCustomerCodeResponse.setCustomerCode("customerCode1");
-        customerDetailByCustomerCodeResponse.setCustomerName("customerCode1");
-        customerDetailByCustomerCodeResponse.setAddress("customerCode1");
-        customerDetailByCustomerCodeResponse.setMobileNumber("customerCode1");
-        customerDetailByCustomerCodeResponse.setBranchCode("customerCode1");
-
+        CustomerDetailByCustomerCodeResponse customerDetailByCustomerCodeResponse = new CustomerDetailByCustomerCodeResponse(
+                "cusCode103",
+                "Manish Adhakari",
+                "Thapa gau, Gokarneshwar",
+                "98089736721",
+                "branch103"
+        );
         return customerDetailByCustomerCodeResponse;
     }
 
     @Override
     public List<CustomerDetailByClientCodeResponse> getCustomerDetailByClientCode(CustomerDetailByCientCodeRequest customerDetailByCientCodeRequest) {
-        List<CustomerDetailByClientCodeResponse> customerDetailList = new ArrayList<>();
-
-        CustomerDetailByClientCodeResponse customerDetailByClientCodeResponse = new CustomerDetailByClientCodeResponse();
-        customerDetailByClientCodeResponse.setCustomerCode("customerCode1");
-        customerDetailByClientCodeResponse.setCustomerName("customerCode1");
-        customerDetailByClientCodeResponse.setAddress("customerCode1");
-        customerDetailByClientCodeResponse.setMobileNumber("customerCode1");
-        customerDetailByClientCodeResponse.setBranchCode("customerCode1");
-
-        CustomerDetailByClientCodeResponse customerDetailByClientCodeResponse1 = new CustomerDetailByClientCodeResponse();
-        customerDetailByClientCodeResponse1.setCustomerCode("customerCode2");
-        customerDetailByClientCodeResponse1.setCustomerName("customerCode2");
-        customerDetailByClientCodeResponse1.setAddress("customerCode2");
-        customerDetailByClientCodeResponse1.setMobileNumber("customerCode2");
-        customerDetailByClientCodeResponse1.setBranchCode("customerCode2");
-
-        customerDetailList.add(customerDetailByClientCodeResponse);
-        customerDetailList.add(customerDetailByClientCodeResponse1);
+        List<CustomerDetailByClientCodeResponse> customerDetailList = List.of(
+                new CustomerDetailByClientCodeResponse(
+                        "cusCode101",
+                        "Binit Tripathi",
+                        "Birgunj, Parsa",
+                        "987323784937",
+                        "branch101"
+                ),
+                new CustomerDetailByClientCodeResponse(
+                        "cusCode102",
+                        "Ajay Khadgi",
+                        "Baneshwar, Kathmandu",
+                        "998736491390",
+                        "branch102"
+                )
+        );
           return customerDetailList;
     }
 }

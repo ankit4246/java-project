@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @Project cbs-middleware
- * @Author mave on 9/26/21
+ * @Author Om Narayan Singh on 9/26/21
  */
 @Service
 public class FullStatementServiceImpl implements FullStatementService {
@@ -17,18 +17,18 @@ public class FullStatementServiceImpl implements FullStatementService {
     public List<FullStatementResponse> getFullStatement(FullStatementRequest fullStatementRequest) {
         List<FullStatementResponse> fullStatementResponseList = List.of(
                 new FullStatementResponse(
-                        "10/10/1010",
-                        1000,
-                        1000,
-                        10,
-                        "status101"
+                        "11/11/1111",
+                        1111,
+                        1111,
+                        11,
+                        "status111"
                 ),
                 new FullStatementResponse(
-                        "20/20/2020",
-                        2000,
-                        2000,
-                        20,
-                        "status202"
+                        "22/22/2222",
+                        2222,
+                        2222,
+                        22,
+                        "status222"
                 )
         );
 

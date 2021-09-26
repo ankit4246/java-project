@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @Project cbs-middleware
- * @Author mave on 9/26/21
+ * @Author Om Narayan Singh on 9/26/21
  */
 public interface MiniStatementService {
     List<MiniStatementResponse> getMiniStatement(MiniStatementRequest miniStatementRequest);

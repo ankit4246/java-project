@@ -7,16 +7,17 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Project cbs-middleware
- * @Author mave on 9/26/21
+ * @Author Om Narayan Singh on 9/26/21
  */
 @Service
 public class ChequeRequestServiceImpl implements ChequeRequestService {
     @Override
     public ChequeRequestResponse getChequeRequest(ChequeRequest chequeRequest) {
-        ChequeRequestResponse chequeRequestResponse = new ChequeRequestResponse();
-        chequeRequestResponse.setStatusCode(101);
-        chequeRequestResponse.setMessage("statsMsg");
-        chequeRequestResponse.setStatusText("statsMsg");
+        ChequeRequestResponse chequeRequestResponse = new ChequeRequestResponse(
+                101,
+                "status text 101",
+                "response message 101"
+        );
         return chequeRequestResponse;
     }
 }

@@ -5,7 +5,7 @@ import com.ch.cbsmiddleware.dto.response.ChequeRequestResponse;
 
 /**
  * @Project cbs-middleware
- * @Author mave on 9/26/21
+ * @Author Om Narayan Singh on 9/26/21
  */
 public interface ChequeRequestService {
     ChequeRequestResponse getChequeRequest(ChequeRequest chequeRequest);

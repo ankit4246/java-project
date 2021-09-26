@@ -18,20 +18,20 @@ public class AccountListServiceImpl implements AccountListService {
     @Override
     public List<AccountListResponse> getAccountListByCustomerCode(AccountListRequest accountListRequest) {
         List<AccountListResponse> accountListResponses = List.of(
-                new AccountListResponse("accountNo101",
-                        "accountName101",
+                new AccountListResponse("acntNo101",
+                        "acntName101",
                         "currancyCode101",
-                        "currancyName101",
+                        "Dollar",
                         "branchCode101",
                         "accoutnSatus101",
                         "accountType101"),
-                new AccountListResponse("accountNo101",
-                        "accountName101",
-                        "currancyCode101",
-                        "currancyName101",
-                        "branchCode101",
-                        "accoutnSatus101",
-                        "accountType101")
+                new AccountListResponse("acntNo102",
+                        "acntName102",
+                        "currancyCode102",
+                        "NRP",
+                        "branchCode102",
+                        "accoutnSatus102",
+                        "accountType102")
         );
 
         return accountListResponses;

@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @Project cbs-middleware
- * @Author mave on 9/26/21
+ * @Author Om Narayan Singh on 9/26/21
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,11 +17,11 @@ public class FullStatementResponse {
     @NotNull
     private String transactionDate;
     @NotNull
-    private Number availableBalance;
+    private Integer availableBalance;
     @NotNull
-    private Number ledgerBalance;
+    private Integer ledgerBalance;
     @NotNull
-    private Number interestRate;
+    private Integer interestRate;
     @NotNull
     private String accountStatus;
 }
