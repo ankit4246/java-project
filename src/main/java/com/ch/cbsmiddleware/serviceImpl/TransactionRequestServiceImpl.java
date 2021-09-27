@@ -1,6 +1,7 @@
 package com.ch.cbsmiddleware.serviceImpl;
 
 import com.ch.cbsmiddleware.dto.request.TransactionRequest;
+import com.ch.cbsmiddleware.dto.response.TransactionData;
 import com.ch.cbsmiddleware.models.TransactionDetail;
 import com.ch.cbsmiddleware.models.TransactionStatus;
 import com.ch.cbsmiddleware.repo.TransactionDetailRepo;
@@ -19,7 +20,7 @@ public class TransactionRequestServiceImpl implements TransactionRequestService 
     private final TransactionDetailRepo transactionDetailRepo;
 
     @Override
-    public String requestTransaction(TransactionRequest request) {
+    public TransactionData requestTransaction(TransactionRequest request) {
 
         //1. Log transaction as pending
         TransactionDetail persisted = transactionDetailRepo.save(TransactionDetail.buildFromRequest(request));
@@ -44,6 +45,8 @@ public class TransactionRequestServiceImpl implements TransactionRequestService 
         persisted.setVoucherNumber(voucherNumber);
         transactionDetailRepo.save(persisted);
 
-        return transactionId;
+        return TransactionData.builder()
+                .transactionId(transactionId)
+                .build();
     }
 }
