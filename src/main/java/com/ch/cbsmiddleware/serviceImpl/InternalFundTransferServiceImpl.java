@@ -37,6 +37,7 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
         }
 
         persisted.setTransactionStatus(TransactionStatus.COMPLETED);
+        persisted.setVoucherNumber(voucherNumber);
         internalFundTransferRepo.save(persisted);
         return VoucherData.builder()
                 .voucherNumber(voucherNumber)
