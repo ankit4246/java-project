@@ -2,16 +2,15 @@ package com.ch.cbsmiddleware.controller;
 
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByCientCodeRequest;
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByCustomerCodeRequest;
-import com.ch.cbsmiddleware.dto.response.HttpResponse;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
-import com.ch.cbsmiddleware.service.ChequeStopService;
 import com.ch.cbsmiddleware.service.CustomerDetailService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 
 /**
@@ -30,7 +29,7 @@ public class CustomerDetailController extends BaseController {
     }
 
     @GetMapping(value = "/client-code")
-    public ResponseEntity<?> getCustomerDetailByClientCode(@RequestBody CustomerDetailByCientCodeRequest customerDetailRequest) {
+    public ResponseEntity<?> getCustomerDetailByClientCode(@Valid @RequestBody CustomerDetailByCientCodeRequest customerDetailRequest) {
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse(
                         "customer-detail-client-code.retrieve.success",
@@ -39,8 +38,8 @@ public class CustomerDetailController extends BaseController {
     }
 
     @GetMapping(value = "/customer-code")
-    public ResponseEntity<?> getCustomerDetailByCustomerCode(@RequestBody CustomerDetailByCustomerCodeRequest customerDetailByCustomerCodeRequest) {
-        return ResponseEntity.ok(
+    public ResponseEntity<?> getCustomerDetailByCustomerCode(@Valid @RequestBody CustomerDetailByCustomerCodeRequest customerDetailByCustomerCodeRequest) {
+         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse(
                         "customer-detail-customer-code.retrieve.success",
                         customerDetailService.getCustomerDetailByCustomerCode(customerDetailByCustomerCodeRequest))

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * @Project cbs-middleware
  * @Author Om Narayan Singh on 9/26/21
@@ -25,7 +27,7 @@ public class ChequeRequestController extends BaseController {
     }
 
     @GetMapping(value = "/")
-    public ResponseEntity<?> getChequeRequest(@RequestBody ChequeRequest chequeRequest){
+    public ResponseEntity<?> getChequeRequest(@Valid @RequestBody ChequeRequest chequeRequest){
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("cheque-request.retrieve.success", chequeRequestService.getChequeRequest(chequeRequest))
         );

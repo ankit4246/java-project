@@ -2,6 +2,7 @@ package com.ch.cbsmiddleware.dto.response;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -14,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 public class BalanceEnquiryByAccountNumberResponse {
-    @NotNull
+    @NotBlank
     private String accountNumber;
     @NotNull
     private Integer availableBalance;
@@ -22,7 +23,7 @@ public class BalanceEnquiryByAccountNumberResponse {
     private Integer ledgerBalance;
     @NotNull
     private Integer interestRate;
-    @NotNull
+    @NotBlank
     private String accountStatus;
 
 }

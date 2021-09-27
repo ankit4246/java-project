@@ -2,6 +2,7 @@ package com.ch.cbsmiddleware.dto.request;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -15,9 +16,9 @@ import java.util.Date;
 @Setter
 @ToString
 public class FullStatementRequest {
-    @NotNull
+    @NotBlank
     private String cbsClientCode;
-    @NotNull
+    @NotBlank
     private String accountNumber;
     @NotNull
     private Date fromDate;

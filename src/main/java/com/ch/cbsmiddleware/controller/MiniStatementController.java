@@ -1,17 +1,15 @@
 package com.ch.cbsmiddleware.controller;
 
 import com.ch.cbsmiddleware.dto.request.MiniStatementRequest;
-import com.ch.cbsmiddleware.dto.response.HttpResponse;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.MiniStatementService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import javax.validation.Valid;
 
 /**
  * @Project cbs-middleware
@@ -29,7 +27,7 @@ public class MiniStatementController extends BaseController {
     }
 
     @GetMapping(value = "/")
-    public ResponseEntity<?> getMiniStatement(@RequestBody MiniStatementRequest miniStatementRequest) {
+    public ResponseEntity<?> getMiniStatement(@Valid @RequestBody MiniStatementRequest miniStatementRequest) {
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("mini-statement.retrieve.success", miniStatementService.getMiniStatement(miniStatementRequest))
         );

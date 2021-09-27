@@ -2,6 +2,7 @@ package com.ch.cbsmiddleware.dto.response;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -23,6 +24,6 @@ public class MiniStatementResponse {
     private Integer ledgerBalance;
     @NotNull
     private Integer interestRate;
-    @NotNull
+    @NotBlank
     private String accountStatus;
 }

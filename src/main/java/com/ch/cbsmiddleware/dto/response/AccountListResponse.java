@@ -2,7 +2,7 @@ package com.ch.cbsmiddleware.dto.response;
 
 import lombok.*;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 /**
  * @Project cbs-middleware
@@ -14,18 +14,18 @@ import javax.validation.constraints.NotNull;
 @Setter
 @ToString
 public class AccountListResponse {
-    @NotNull
+    @NotBlank
     private String accountNumber;
-    @NotNull
+    @NotBlank
     private String accountName;
-    @NotNull
+    @NotBlank
     private String currancyCode;
-    @NotNull
+    @NotBlank
     private String currancyName;
-    @NotNull
+    @NotBlank
     private String branchCode;
-    @NotNull
+    @NotBlank
     private String accountStatus;
-    @NotNull
+    @NotBlank
     private String accountType;
 }

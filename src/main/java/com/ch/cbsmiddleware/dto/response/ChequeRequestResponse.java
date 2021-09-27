@@ -2,6 +2,7 @@ package com.ch.cbsmiddleware.dto.response;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -16,8 +17,8 @@ import javax.validation.constraints.NotNull;
 public class ChequeRequestResponse {
     @NotNull
     private Integer statusCode;
-    @NotNull
+    @NotBlank
     private String statusText;
-    @NotNull
+    @NotBlank
     private String message;
 }
