@@ -3,6 +3,8 @@ package com.ch.cbsmiddleware.controller;
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByCientCodeRequest;
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByCustomerCodeRequest;
 import com.ch.cbsmiddleware.dto.response.HttpResponse;
+import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
+import com.ch.cbsmiddleware.service.ChequeStopService;
 import com.ch.cbsmiddleware.service.CustomerDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,22 +20,30 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/customer-detail")
-@RequiredArgsConstructor
-public class CustomerDetailController {
+public class CustomerDetailController extends BaseController {
 
     private final CustomerDetailService customerDetailService;
+
+    public CustomerDetailController(ResponseGenerator responseGenerator, CustomerDetailService customerDetailService) {
+        super(responseGenerator);
+        this.customerDetailService = customerDetailService;
+    }
 
     @GetMapping(value = "/client-code")
     public ResponseEntity<?> getCustomerDetailByClientCode(@RequestBody CustomerDetailByCientCodeRequest customerDetailRequest) {
         return ResponseEntity.ok(
-                HttpResponse.getSuccessResponse("Customer detail by Client Code retrieved", customerDetailService.getCustomerDetailByClientCode(customerDetailRequest))
+                responseGenerator.getSuccessResponse(
+                        "customer-detail-client-code.retrieve.success",
+                        customerDetailService.getCustomerDetailByClientCode(customerDetailRequest))
         );
     }
 
     @GetMapping(value = "/customer-code")
     public ResponseEntity<?> getCustomerDetailByCustomerCode(@RequestBody CustomerDetailByCustomerCodeRequest customerDetailByCustomerCodeRequest) {
         return ResponseEntity.ok(
-                HttpResponse.getSuccessResponse("Customer detail by Customer Code retrieved", customerDetailService.getCustomerDetailByCustomerCode(customerDetailByCustomerCodeRequest))
+                responseGenerator.getSuccessResponse(
+                        "customer-detail-customer-code.retrieve.success",
+                        customerDetailService.getCustomerDetailByCustomerCode(customerDetailByCustomerCodeRequest))
         );
     }
 

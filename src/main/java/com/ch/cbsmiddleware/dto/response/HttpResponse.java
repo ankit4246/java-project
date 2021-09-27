@@ -17,5 +17,4 @@ public class HttpResponse {
     protected String statusText;
     protected String message;
     protected Object data;
-
 }

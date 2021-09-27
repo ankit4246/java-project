@@ -2,6 +2,7 @@ package com.ch.cbsmiddleware.controller;
 
 import com.ch.cbsmiddleware.dto.request.MiniStatementRequest;
 import com.ch.cbsmiddleware.dto.response.HttpResponse;
+import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.MiniStatementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,15 +19,19 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/mini-statement")
-@RequiredArgsConstructor
-public class MiniStatementController {
+public class MiniStatementController extends BaseController {
 
     private final MiniStatementService miniStatementService;
+
+    public MiniStatementController(ResponseGenerator responseGenerator, MiniStatementService miniStatementService) {
+        super(responseGenerator);
+        this.miniStatementService = miniStatementService;
+    }
 
     @GetMapping(value = "/")
     public ResponseEntity<?> getMiniStatement(@RequestBody MiniStatementRequest miniStatementRequest) {
         return ResponseEntity.ok(
-                HttpResponse.getSuccessResponse("Mini Statement By Account Number retrieved", miniStatementService.getMiniStatement(miniStatementRequest))
+                responseGenerator.getSuccessResponse("mini-statement.retrieve.success", miniStatementService.getMiniStatement(miniStatementRequest))
         );
     }
 }
