@@ -26,6 +26,7 @@ public class TransactionRequestController extends BaseController{
 
     @PostMapping("/transaction-request")
     public ResponseEntity<?> requestTransaction(@RequestBody TransactionRequest request){
+        System.out.println(request);
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("transaction.request.success", transactionRequestService.requestTransaction(request))
         );
