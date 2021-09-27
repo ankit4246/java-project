@@ -29,7 +29,7 @@ public class InternalFundTransferController extends BaseController{
     @PostMapping
     public ResponseEntity<?> executeInternalFundTransfer(@RequestBody InternalFundTransferRequest request){
         return ResponseEntity.ok(
-                HttpResponse.getSuccessResponse("fund.transfer.success", internalFundTransferService.executeInternalFundTransfer(request))
+                responseGenerator.getSuccessResponse("fund.transfer.success", internalFundTransferService.executeInternalFundTransfer(request))
         );
     }
 

@@ -21,14 +21,4 @@ public class HttpResponse {
     protected String statusText;
     protected String message;
     protected Object data;
-
-    public static HttpResponse getSuccessResponse(String messageCode, Object data) {
-        return HttpResponse.builder()
-                .statusCode(HttpStatus.OK.value())
-                .statusText("")
-                .message("")
-                .data(data)
-                .build();
-    }
-
 }
