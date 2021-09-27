@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * @author bimal on 9/26/21
  * @project cbs-middleware
@@ -27,7 +29,7 @@ public class InternalFundTransferController extends BaseController{
     }
 
     @PostMapping
-    public ResponseEntity<?> executeInternalFundTransfer(@RequestBody InternalFundTransferRequest request){
+    public ResponseEntity<?> executeInternalFundTransfer(@Valid @RequestBody InternalFundTransferRequest request){
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("fund.transfer.success", internalFundTransferService.executeInternalFundTransfer(request))
         );

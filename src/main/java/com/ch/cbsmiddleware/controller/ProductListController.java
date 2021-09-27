@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * @author bimal on 9/26/21
  * @project cbs-middleware
@@ -25,7 +27,7 @@ public class ProductListController extends BaseController{
     }
 
     @GetMapping("/list-product")
-    public ResponseEntity<?> listProducts(@RequestParam("cbsClientCode") String cbsClientCode,
+    public ResponseEntity<?> listProducts(@NotBlank @RequestParam("cbsClientCode") String cbsClientCode,
                                           @RequestParam(value = "productTypeCode", required = false) String productTypeCode){
 
         return ResponseEntity.ok(

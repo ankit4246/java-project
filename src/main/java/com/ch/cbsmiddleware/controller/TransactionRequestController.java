@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * @author bimal on 9/26/21
  * @project cbs-middleware
@@ -25,7 +27,7 @@ public class TransactionRequestController extends BaseController{
     }
 
     @PostMapping("/transaction-request")
-    public ResponseEntity<?> requestTransaction(@RequestBody TransactionRequest request){
+    public ResponseEntity<?> requestTransaction(@Valid @RequestBody TransactionRequest request){
         System.out.println(request);
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("transaction.request.success", transactionRequestService.requestTransaction(request))

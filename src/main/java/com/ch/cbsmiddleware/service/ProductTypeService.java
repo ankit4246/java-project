@@ -1,6 +1,5 @@
 package com.ch.cbsmiddleware.service;
 
-import com.ch.cbsmiddleware.dto.request.ProductTypeRequest;
 import com.ch.cbsmiddleware.dto.response.ProductTypeData;
 
 import java.util.List;

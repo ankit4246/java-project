@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * @author bimal on 9/26/21
  * @project cbs-middleware
@@ -24,7 +26,7 @@ public class ProductTypeController extends BaseController{
     }
 
     @GetMapping("list-product-types")
-    public ResponseEntity<?> listProductTypesOfClient(@RequestParam("cbsClientCode") String cbsClientCode ){
+    public ResponseEntity<?> listProductTypesOfClient(@NotBlank @RequestParam("cbsClientCode") String cbsClientCode ){
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("product-types.list.retrieve.success", productTypeService.listProductTypesOfClient(cbsClientCode))
         );

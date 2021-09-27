@@ -18,7 +18,7 @@ public class ResponseGenerator {
 
     public HttpResponse getSuccessResponse(String messageCode, Object data) {
         return HttpResponse.builder()
-                .statusCode(HttpStatus.OK.value())
+                .statusCode(1)
                 .statusText(messageSource.getMessage("status.success", null, Locale.ENGLISH))
                 .message(messageSource.getMessage(messageCode, null, Locale.ENGLISH))
                 .data(data)

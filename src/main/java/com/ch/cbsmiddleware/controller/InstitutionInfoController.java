@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * @author bimal on 9/26/21
  * @project cbs-middleware
@@ -26,14 +28,14 @@ public class InstitutionInfoController extends BaseController {
     }
 
     @GetMapping("/branch-list")
-    public ResponseEntity<?> findBranchList(@RequestParam("cbsClientCode")String cbsClientCode){
+    public ResponseEntity<?> findBranchList(@NotBlank @RequestParam("cbsClientCode")String cbsClientCode){
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("branch.list.retrieve.success",
                         institutionInfoService.findBranchList(cbsClientCode))
         );
     }
     @GetMapping("/detail")
-    public ResponseEntity<?> getInstitutionData(@RequestParam("cbsClientCode")String cbsClientCode){
+    public ResponseEntity<?> getInstitutionData(@NotBlank @RequestParam("cbsClientCode")String cbsClientCode){
         return ResponseEntity.ok(
             responseGenerator.getSuccessResponse("institution.retrieve.success", institutionInfoService.getInstitutionData(cbsClientCode))
         );

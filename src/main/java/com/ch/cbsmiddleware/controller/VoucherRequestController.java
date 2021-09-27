@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * @author bimal on 9/26/21
  * @project cbs-middleware
@@ -25,7 +27,7 @@ public class VoucherRequestController extends BaseController{
     }
 
     @PostMapping("/request-voucher")
-    public ResponseEntity<?> requestVoucher(@RequestBody VoucherRequest request){
+    public ResponseEntity<?> requestVoucher(@Valid @RequestBody VoucherRequest request){
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("voucher.request.success", voucherRequestService.requestVoucher(request))
         );

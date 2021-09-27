@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * @author bimal on 9/26/21
  * @project cbs-middleware
@@ -25,7 +27,7 @@ public class ChequeStopController extends BaseController {
     }
 
     @PostMapping("/stop-cheque")
-    public ResponseEntity<?> stopCheque(@RequestBody ChequeStopRequest chequeStopRequest) {
+    public ResponseEntity<?> stopCheque(@Valid @RequestBody ChequeStopRequest chequeStopRequest) {
         chequeStopService.stopCheque(chequeStopRequest);
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("cheque.stop.success", chequeStopRequest)
