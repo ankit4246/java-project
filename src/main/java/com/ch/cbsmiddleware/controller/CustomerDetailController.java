@@ -32,7 +32,7 @@ public class CustomerDetailController extends BaseController {
     public ResponseEntity<?> getCustomerDetailByClientCode(@Valid @RequestBody CustomerDetailByCientCodeRequest customerDetailRequest) {
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse(
-                        "customer-detail-client-code.retrieve.success",
+                        "retrieve.success","Customer Detail",
                         customerDetailService.getCustomerDetailByClientCode(customerDetailRequest))
         );
     }
@@ -41,7 +41,7 @@ public class CustomerDetailController extends BaseController {
     public ResponseEntity<?> getCustomerDetailByCustomerCode(@Valid @RequestBody CustomerDetailByCustomerCodeRequest customerDetailByCustomerCodeRequest) {
          return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse(
-                        "customer-detail-customer-code.retrieve.success",
+                        "retrieve.success","Customer Detail",
                         customerDetailService.getCustomerDetailByCustomerCode(customerDetailByCustomerCodeRequest))
         );
     }

@@ -30,14 +30,14 @@ public class InstitutionInfoController extends BaseController {
     @GetMapping("/branch-list")
     public ResponseEntity<?> findBranchList(@NotBlank @RequestParam("cbsClientCode")String cbsClientCode){
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("branch.list.retrieve.success",
+                responseGenerator.getSuccessResponse("retrieve.success","Branch List",
                         institutionInfoService.findBranchList(cbsClientCode))
         );
     }
     @GetMapping("/detail")
     public ResponseEntity<?> getInstitutionData(@NotBlank @RequestParam("cbsClientCode")String cbsClientCode){
         return ResponseEntity.ok(
-            responseGenerator.getSuccessResponse("institution.retrieve.success", institutionInfoService.getInstitutionData(cbsClientCode))
+            responseGenerator.getSuccessResponse("retrieve.success", "Institution",institutionInfoService.getInstitutionData(cbsClientCode))
         );
     }
 

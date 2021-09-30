@@ -29,7 +29,7 @@ public class MiniStatementController extends BaseController {
     @GetMapping(value = "/")
     public ResponseEntity<?> getMiniStatement(@Valid @RequestBody MiniStatementRequest miniStatementRequest) {
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("mini-statement.retrieve.success", miniStatementService.getMiniStatement(miniStatementRequest))
+                responseGenerator.getSuccessResponse("retrieve.success","Mini Statement", miniStatementService.getMiniStatement(miniStatementRequest))
         );
     }
 }

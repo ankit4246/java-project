@@ -30,7 +30,7 @@ public class FullStatementController extends BaseController {
     @GetMapping(value = "/")
     public ResponseEntity<?> getFullStatement(@Valid @RequestBody FullStatementRequest fullStatementRequest) {
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("full-statement.retrieve.success", fullStatementService.getFullStatement(fullStatementRequest))
+                responseGenerator.getSuccessResponse("retrieve.success","Full Statement", fullStatementService.getFullStatement(fullStatementRequest))
         );
     }
 }
