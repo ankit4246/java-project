@@ -31,14 +31,14 @@ public class BalanceEnquiryController extends BaseController {
     @GetMapping(value = "/customer-code")
     public ResponseEntity<?> getBalanceByCustomerCode(@Valid @RequestBody BalanceEnquiryByCustomerCodeRequest balanceEnquiryByCustomerCodeRequest) {
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("balance-enquiry-customer-code.retrieve.success", balanceEnquiryService.getBalanceByCustomerCode(balanceEnquiryByCustomerCodeRequest))
+                responseGenerator.getSuccessResponse("retrieve.success", "Balance Enquiry",balanceEnquiryService.getBalanceByCustomerCode(balanceEnquiryByCustomerCodeRequest))
         );
     }
 
     @GetMapping(value = "/account-number")
     public ResponseEntity<?> getBalanceByAccountNumber(@Valid @RequestBody BalanceEnquiryByAccountNumberRequest balanceEnquiryByAccountNumberRequest) {
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("balance-enquiry-account-number.retrieve.success", balanceEnquiryService.getBalanceByAccountNumber(balanceEnquiryByAccountNumberRequest))
+                responseGenerator.getSuccessResponse("retrieve.success","Balance Enquiry",balanceEnquiryService.getBalanceByAccountNumber(balanceEnquiryByAccountNumberRequest))
         );
     }
 }

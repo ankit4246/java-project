@@ -30,7 +30,7 @@ public class AccountListController extends BaseController{
     @GetMapping(value = "/")
     public ResponseEntity<?> getAccountListByCustomerCode(@Valid @RequestBody AccountListRequest accountListRequest){
          return ResponseEntity.ok(
-                 responseGenerator.getSuccessResponse("account-list.retrieve.success", accountListService.getAccountListByCustomerCode(accountListRequest))
+                 responseGenerator.getSuccessResponse("retrieve.success","Account List",accountListService.getAccountListByCustomerCode(accountListRequest))
         );
     }
 }

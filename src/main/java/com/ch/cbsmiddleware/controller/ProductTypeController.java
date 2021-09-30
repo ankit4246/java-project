@@ -28,7 +28,7 @@ public class ProductTypeController extends BaseController{
     @GetMapping("list-product-types")
     public ResponseEntity<?> listProductTypesOfClient(@NotBlank @RequestParam("cbsClientCode") String cbsClientCode ){
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("product-types.list.retrieve.success", productTypeService.listProductTypesOfClient(cbsClientCode))
+                responseGenerator.getSuccessResponse("retrieve.success","Product Types", productTypeService.listProductTypesOfClient(cbsClientCode))
         );
     }
 }

@@ -31,7 +31,7 @@ public class ProductListController extends BaseController{
                                           @RequestParam(value = "productTypeCode", required = false) String productTypeCode){
 
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("product.list.retrieve.success", productListService.listProducts(cbsClientCode,
+                responseGenerator.getSuccessResponse("retrieve.success","Product List", productListService.listProducts(cbsClientCode,
                         productTypeCode))
         );
     }

@@ -24,4 +24,13 @@ public class ResponseGenerator {
                 .data(data)
                 .build();
     }
+
+    public HttpResponse getSuccessResponse(String messageCode, String param, Object data) {
+        return HttpResponse.builder()
+                .statusCode(1)
+                .statusText(messageSource.getMessage("status.success", null, Locale.ENGLISH))
+                .message(messageSource.getMessage(messageCode, new Object[]{param}, Locale.ENGLISH))
+                .data(data)
+                .build();
+    }
 }

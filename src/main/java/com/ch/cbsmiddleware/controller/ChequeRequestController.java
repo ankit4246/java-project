@@ -29,7 +29,7 @@ public class ChequeRequestController extends BaseController {
     @GetMapping(value = "/")
     public ResponseEntity<?> getChequeRequest(@Valid @RequestBody ChequeRequest chequeRequest){
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("cheque-request.retrieve.success", chequeRequestService.getChequeRequest(chequeRequest))
+                responseGenerator.getSuccessResponse("retrieve.success","Cheque Request", chequeRequestService.getChequeRequest(chequeRequest))
         );
     }
 }
