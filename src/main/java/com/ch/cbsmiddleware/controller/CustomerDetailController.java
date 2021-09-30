@@ -2,7 +2,6 @@ package com.ch.cbsmiddleware.controller;
 
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByCientCodeRequest;
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByCustomerCodeRequest;
-import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.CustomerDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

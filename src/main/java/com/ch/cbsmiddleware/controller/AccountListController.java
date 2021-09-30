@@ -25,8 +25,7 @@ public class AccountListController extends BaseController{
     private final AccountListService accountListService;
 
     @GetMapping(value = "/")
-    public ResponseEntity<?> getAccountListByCustomerCode(@Valid @RequestBody Accou
-                                                                      ntListRequest accountListRequest){
+    public ResponseEntity<?> getAccountListByCustomerCode(@Valid @RequestBody AccountListRequest accountListRequest){
          return ResponseEntity.ok(
                  responseGenerator.getSuccessResponse("retrieve.success","Account List",accountListService.getAccountListByCustomerCode(accountListRequest))
         );
