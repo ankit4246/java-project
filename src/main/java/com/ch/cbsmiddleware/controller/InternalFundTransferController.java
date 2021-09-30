@@ -19,14 +19,10 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping ("/internal-fund-transfer")
+@RequiredArgsConstructor
 public class InternalFundTransferController extends BaseController{
 
     private final InternalFundTransferService internalFundTransferService;
-
-    public InternalFundTransferController(ResponseGenerator responseGenerator, InternalFundTransferService internalFundTransferService) {
-        super(responseGenerator);
-        this.internalFundTransferService = internalFundTransferService;
-    }
 
     @PostMapping
     public ResponseEntity<?> executeInternalFundTransfer(@Valid @RequestBody InternalFundTransferRequest request){
