@@ -3,6 +3,7 @@ package com.ch.cbsmiddleware.controller;
 import com.ch.cbsmiddleware.dto.request.AccountListRequest;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.AccountListService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,14 +19,10 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping(value = "/account-list")
+@RequiredArgsConstructor
 public class AccountListController extends BaseController{
 
     private final AccountListService accountListService;
-
-    public AccountListController(ResponseGenerator responseGenerator, AccountListService accountListService) {
-        super(responseGenerator);
-        this.accountListService = accountListService;
-    }
 
     @GetMapping(value = "/")
     public ResponseEntity<?> getAccountListByCustomerCode(@Valid @RequestBody AccountListRequest accountListRequest){

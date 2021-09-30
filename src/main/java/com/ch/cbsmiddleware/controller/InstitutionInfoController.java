@@ -3,6 +3,7 @@ package com.ch.cbsmiddleware.controller;
 import com.ch.cbsmiddleware.dto.response.HttpResponse;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.InstitutionInfoService;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,17 +19,15 @@ import javax.validation.constraints.NotBlank;
  */
 @RestController
 @RequestMapping("/institution")
+@RequiredArgsConstructor
 public class InstitutionInfoController extends BaseController {
 
     private final InstitutionInfoService institutionInfoService;
 
-    public InstitutionInfoController(ResponseGenerator responseGenerator, InstitutionInfoService institutionInfoService) {
-        super(responseGenerator);
-        this.institutionInfoService = institutionInfoService;
-    }
 
     @GetMapping("/branch-list")
     public ResponseEntity<?> findBranchList(@NotBlank @RequestParam("cbsClientCode")String cbsClientCode){
+        System.out.println(institutionInfoService);
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("retrieve.success","Branch List",
                         institutionInfoService.findBranchList(cbsClientCode))

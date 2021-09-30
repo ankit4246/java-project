@@ -3,6 +3,7 @@ package com.ch.cbsmiddleware.controller;
 import com.ch.cbsmiddleware.dto.request.MiniStatementRequest;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.MiniStatementService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,14 +18,10 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping(value = "/mini-statement")
+@RequiredArgsConstructor
 public class MiniStatementController extends BaseController {
 
     private final MiniStatementService miniStatementService;
-
-    public MiniStatementController(ResponseGenerator responseGenerator, MiniStatementService miniStatementService) {
-        super(responseGenerator);
-        this.miniStatementService = miniStatementService;
-    }
 
     @GetMapping(value = "/")
     public ResponseEntity<?> getMiniStatement(@Valid @RequestBody MiniStatementRequest miniStatementRequest) {

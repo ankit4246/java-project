@@ -17,14 +17,10 @@ import javax.validation.constraints.NotBlank;
  * @project cbs-middleware
  */
 @RestController
+@RequiredArgsConstructor
 public class ProductListController extends BaseController{
 
     private final ProductListService productListService;
-
-    public ProductListController(ResponseGenerator responseGenerator, ProductListService productListService) {
-        super(responseGenerator);
-        this.productListService = productListService;
-    }
 
     @GetMapping("/list-product")
     public ResponseEntity<?> listProducts(@NotBlank @RequestParam("cbsClientCode") String cbsClientCode,

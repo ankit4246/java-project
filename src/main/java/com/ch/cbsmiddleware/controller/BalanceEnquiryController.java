@@ -4,6 +4,7 @@ import com.ch.cbsmiddleware.dto.request.BalanceEnquiryByAccountNumberRequest;
 import com.ch.cbsmiddleware.dto.request.BalanceEnquiryByCustomerCodeRequest;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.BalanceEnquiryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,14 +20,10 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping(value = "/balance-enquiry")
+@RequiredArgsConstructor
 public class BalanceEnquiryController extends BaseController {
 
     private final BalanceEnquiryService balanceEnquiryService;
-
-    public BalanceEnquiryController(ResponseGenerator responseGenerator, BalanceEnquiryService balanceEnquiryService) {
-        super(responseGenerator);
-        this.balanceEnquiryService = balanceEnquiryService;
-    }
 
     @GetMapping(value = "/customer-code")
     public ResponseEntity<?> getBalanceByCustomerCode(@Valid @RequestBody BalanceEnquiryByCustomerCodeRequest balanceEnquiryByCustomerCodeRequest) {

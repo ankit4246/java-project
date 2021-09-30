@@ -3,6 +3,7 @@ package com.ch.cbsmiddleware.controller;
 import com.ch.cbsmiddleware.dto.request.ChequeRequest;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.ChequeRequestService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,14 +18,10 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping(value = "/cheque-request")
+@RequiredArgsConstructor
 public class ChequeRequestController extends BaseController {
 
     private final ChequeRequestService chequeRequestService;
-
-    public ChequeRequestController(ResponseGenerator responseGenerator, ChequeRequestService chequeRequestService) {
-        super(responseGenerator);
-        this.chequeRequestService = chequeRequestService;
-    }
 
     @GetMapping(value = "/")
     public ResponseEntity<?> getChequeRequest(@Valid @RequestBody ChequeRequest chequeRequest){

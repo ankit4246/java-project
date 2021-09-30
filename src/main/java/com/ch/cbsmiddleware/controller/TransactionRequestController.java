@@ -17,14 +17,11 @@ import javax.validation.Valid;
  * @project cbs-middleware
  */
 @RestController
+@RequiredArgsConstructor
 public class TransactionRequestController extends BaseController{
 
     private final TransactionRequestService transactionRequestService;
 
-    public TransactionRequestController(ResponseGenerator responseGenerator, TransactionRequestService transactionRequestService) {
-        super(responseGenerator);
-        this.transactionRequestService = transactionRequestService;
-    }
 
     @PostMapping("/transaction-request")
     public ResponseEntity<?> requestTransaction(@Valid @RequestBody TransactionRequest request){
