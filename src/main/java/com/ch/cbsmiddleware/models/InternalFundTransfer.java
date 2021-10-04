@@ -3,7 +3,6 @@ package com.ch.cbsmiddleware.models;
 import com.ch.cbsmiddleware.dto.request.InternalFundTransferRequest;
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -23,7 +22,7 @@ import java.sql.Timestamp;
 @Table(name = "internal_fund_transfer", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
                 "from_account_number",
-                "transaction_timestamp"
+                "timestamp"
         })
 })
 public class InternalFundTransfer {
@@ -48,14 +47,14 @@ public class InternalFundTransfer {
     @Column(name = "remarks", nullable = false)
     private String remarks;
 
-    @Column(name = "transaction_timestamp", nullable = false)
-    private Timestamp transactionTimestamp;
+    @Column(name = "timestamp", nullable = false)
+    private Timestamp timestamp;
 
     @Column(name = "voucher_number")
     private String voucherNumber;
 
-    @Column(name = "transaction_status", nullable = false)
-    private String transactionStatus;
+    @Column(name = "status", nullable = false)
+    private String status;
 
     public static InternalFundTransfer buildFromRequest(InternalFundTransferRequest request){
         InternalFundTransfer internalFundTransfer = InternalFundTransfer.builder()
@@ -64,9 +63,16 @@ public class InternalFundTransfer {
                 .toAccountNumber(request.getToAccountNumber())
                 .paymentAmount(request.getPaymentAmount())
                 .remarks(request.getRemarks())
-                .transactionTimestamp(request.getTransactionTimestamp())
-                .transactionStatus(TransactionStatus.PENDING)
+                .timestamp(request.getTransactionTimestamp())
+                .status(Status.PENDING)
                 .build();
         return internalFundTransfer;
+    }
+
+    //Format for apache commons csv writer
+    @Override
+    public String toString() {
+        return id+","+cbsClientCode+","+fromAccountNumber+","+toAccountNumber+","+paymentAmount+","+remarks+","+timestamp+","+voucherNumber+","+status;
+
     }
 }
