@@ -1,8 +1,12 @@
+
 package com.ch.cbsmiddleware.serviceImpl;
 
 import com.ch.cbsmiddleware.models.ChequeRequestLog;
 import com.ch.cbsmiddleware.models.InternalFundTransfer;
+import com.ch.cbsmiddleware.models.LogTypes;
+import com.ch.cbsmiddleware.repo.LogMetaDataRepo;
 import com.ch.cbsmiddleware.service.CsvFileWriter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,11 +14,13 @@ import org.springframework.stereotype.Service;
  * @project cbs-middleware
  */
 @Service
+@RequiredArgsConstructor
 public class CsvFileWriterImpl implements CsvFileWriter {
+    private final LogMetaDataRepo logMetaDataRepo;
+    private final CsvFileNameGenerator csvFileNameGenerator;
+
     @Override
     public void writeChequeRequest(ChequeRequestLog chequeRequestLog) {
-        String csvPath = "src/main/resources/cheque_request.csv";
-
         String[] columnNames = new String[]{
                 "id",
                 "cbsClientCode",
@@ -25,13 +31,13 @@ public class CsvFileWriterImpl implements CsvFileWriter {
                 "status"
         };
 
+        String csvPath = csvFileNameGenerator.generate(logMetaDataRepo, LogTypes.CHEQUE_REQUEST);
         appendData(csvPath, columnNames, chequeRequestLog);
-
     }
 
     @Override
     public void writeInternalFundTransferDetail(InternalFundTransfer internalFundTransfer) {
-        String cvsPath = "src/main/resources/ift.csv";
+        String cvsPath = csvFileNameGenerator.generate(logMetaDataRepo, LogTypes.INTERNAL_FUND_TRANSFER);
 
         String[] columnNames = new String[]{
                 "cbsClientCode",
