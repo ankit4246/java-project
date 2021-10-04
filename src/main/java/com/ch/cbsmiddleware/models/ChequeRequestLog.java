@@ -48,7 +48,7 @@ public class ChequeRequestLog {
     //Format for apache commons csv writer
     @Override
     public String toString() {
-        return id+","+cbsClientCode+","+accountNumber+","+chequeNumber+","+type+","+timestamp+","+status;
+        return id+","+cbsClientCode+","+accountNumber+","+chequeNumber+","+type+","+timestamp+","+status    ;
     }
 }
 

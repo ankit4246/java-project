@@ -1,6 +1,7 @@
 package com.ch.cbsmiddleware.service;
 
 import com.ch.cbsmiddleware.models.ChequeRequestLog;
+import com.ch.cbsmiddleware.models.InternalFundTransfer;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -45,5 +46,6 @@ public interface CsvFileWriter {
     }
 
     void writeChequeRequest(ChequeRequestLog chequeRequestLog);
+    void writeInternalFundTransferDetail(InternalFundTransfer internalFundTransfer);
 
 }
