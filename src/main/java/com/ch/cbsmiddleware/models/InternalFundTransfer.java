@@ -3,7 +3,6 @@ package com.ch.cbsmiddleware.models;
 import com.ch.cbsmiddleware.dto.request.InternalFundTransferRequest;
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -65,7 +64,7 @@ public class InternalFundTransfer {
                 .paymentAmount(request.getPaymentAmount())
                 .remarks(request.getRemarks())
                 .transactionTimestamp(request.getTransactionTimestamp())
-                .transactionStatus(TransactionStatus.PENDING)
+                .transactionStatus(Status.PENDING)
                 .build();
         return internalFundTransfer;
     }

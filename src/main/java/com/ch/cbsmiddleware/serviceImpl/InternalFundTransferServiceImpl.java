@@ -3,7 +3,7 @@ package com.ch.cbsmiddleware.serviceImpl;
 import com.ch.cbsmiddleware.dto.request.InternalFundTransferRequest;
 import com.ch.cbsmiddleware.dto.response.VoucherData;
 import com.ch.cbsmiddleware.models.InternalFundTransfer;
-import com.ch.cbsmiddleware.models.TransactionStatus;
+import com.ch.cbsmiddleware.models.Status;
 import com.ch.cbsmiddleware.repo.InternalFundTransferRepo;
 import com.ch.cbsmiddleware.service.InternalFundTransferService;
 import lombok.RequiredArgsConstructor;
@@ -31,12 +31,12 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
 
         //3. if voucher is blank, mark as failed otherwise completed
         if(voucherNumber.isBlank()){
-            persisted.setTransactionStatus(TransactionStatus.FAILED);
+            persisted.setTransactionStatus(Status.FAILED);
             internalFundTransferRepo.save(persisted);
             throw new RuntimeException(); //TODO: Make custom exception TransactionFailure
         }
 
-        persisted.setTransactionStatus(TransactionStatus.COMPLETED);
+        persisted.setTransactionStatus(Status.COMPLETED);
         persisted.setVoucherNumber(voucherNumber);
         internalFundTransferRepo.save(persisted);
         return VoucherData.builder()

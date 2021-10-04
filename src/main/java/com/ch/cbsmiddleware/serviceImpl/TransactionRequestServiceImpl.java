@@ -3,7 +3,7 @@ package com.ch.cbsmiddleware.serviceImpl;
 import com.ch.cbsmiddleware.dto.request.TransactionRequest;
 import com.ch.cbsmiddleware.dto.response.TransactionData;
 import com.ch.cbsmiddleware.models.TransactionDetail;
-import com.ch.cbsmiddleware.models.TransactionStatus;
+import com.ch.cbsmiddleware.models.Status;
 import com.ch.cbsmiddleware.repo.TransactionDetailRepo;
 import com.ch.cbsmiddleware.service.TransactionRequestService;
 import lombok.RequiredArgsConstructor;
@@ -29,14 +29,14 @@ public class TransactionRequestServiceImpl implements TransactionRequestService 
         String transactionId = "12345";
 
         if (transactionId.isBlank()) {
-            persisted.setTransactionStatus(TransactionStatus.FAILED);
+            persisted.setTransactionStatus(Status.FAILED);
             transactionDetailRepo.save(persisted);
             throw new RuntimeException();
         }
 
         //3. Set transactionId in transaction_detail table and mark as COMPLETED
         persisted.setTransactionId(transactionId);
-        persisted.setTransactionStatus(TransactionStatus.COMPLETED);
+        persisted.setTransactionStatus(Status.COMPLETED);
 
         //4. Call proc to get voucher id
         String voucherNumber = "772BH";
