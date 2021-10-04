@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class BalanceEnquiryByCustomerCodeResponse {
     @NotBlank
+    @NotNull
     private String accountNumber;
     @NotNull
     private Integer availableBalance;
@@ -24,5 +25,6 @@ public class BalanceEnquiryByCustomerCodeResponse {
     @NotNull
     private Integer InterestRate;
     @NotBlank
+    @NotNull
     private String accountStatus;
 }

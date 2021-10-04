@@ -28,11 +28,11 @@ public class BalanceEnquiryServiceImpl implements BalanceEnquiryService {
                         1000,
                         "accStts101"),
                 new BalanceEnquiryByCustomerCodeResponse(
-                        "accNo101",
-                        1000,
-                        1000,
-                        1000,
-                        "accStts101")
+                        "accNo102",
+                        2000,
+                        2000,
+                        2000,
+                        "accStts102")
         );
 
         return balanceEnquiryByCustomerCodeResponseList;

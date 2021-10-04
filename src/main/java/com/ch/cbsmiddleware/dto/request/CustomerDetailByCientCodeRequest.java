@@ -3,6 +3,7 @@ package com.ch.cbsmiddleware.dto.request;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * @Project cbs-middleware
@@ -15,6 +16,9 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class CustomerDetailByCientCodeRequest {
     @NotBlank
+    @NotNull
     private String cbsClientCode;
     private String branchCode;
+    private String searchString;
+
 }

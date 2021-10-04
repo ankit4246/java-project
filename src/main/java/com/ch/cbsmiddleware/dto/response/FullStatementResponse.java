@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * @Project cbs-middleware
@@ -15,14 +16,18 @@ import javax.validation.constraints.NotNull;
 @Setter
 @ToString
 public class FullStatementResponse {
+    @NotNull
+    private Date transactionDate;
     @NotBlank
-    private String transactionDate;
     @NotNull
-    private Integer availableBalance;
-    @NotNull
-    private Integer ledgerBalance;
-    @NotNull
-    private Integer interestRate;
+    private String particular;
     @NotBlank
-    private String accountStatus;
+    @NotNull
+    private String transactionType;
+    @NotBlank
+    @NotNull
+    private Integer transactionAmount;
+    @NotBlank
+    @NotNull
+    private Integer balance;
 }

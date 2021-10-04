@@ -4,10 +4,7 @@ import com.ch.cbsmiddleware.dto.request.ChequeRequest;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.ChequeRequestService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -26,10 +23,11 @@ public class ChequeRequestController extends BaseController {
         this.chequeRequestService = chequeRequestService;
     }
 
-    @GetMapping(value = "/")
+    @PostMapping(value = "/")
     public ResponseEntity<?> getChequeRequest(@Valid @RequestBody ChequeRequest chequeRequest){
+        chequeRequestService.getChequeRequest(chequeRequest);
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("retrieve.success","Cheque Request", chequeRequestService.getChequeRequest(chequeRequest))
+                responseGenerator.getSuccessResponse("retrieve.success","Cheque Request", chequeRequest)
         );
     }
 }

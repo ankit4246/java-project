@@ -17,8 +17,10 @@ import java.util.Date;
 @ToString
 public class FullStatementRequest {
     @NotBlank
+    @NotNull
     private String cbsClientCode;
     @NotBlank
+    @NotNull
     private String accountNumber;
     @NotNull
     private Date fromDate;

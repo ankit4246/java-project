@@ -19,11 +19,13 @@ public class MiniStatementResponse {
     @NotNull
     private Date transactionDate;
     @NotNull
-    private Integer availableBalance;
     @NotNull
-    private Integer ledgerBalance;
+    private String particular;
     @NotNull
-    private Integer interestRate;
     @NotBlank
-    private String accountStatus;
+    private String transactionType;
+    @NotNull
+    private Integer transactionAmount;
+    @NotNull
+    private Integer balance;
 }

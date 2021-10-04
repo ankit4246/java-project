@@ -5,6 +5,7 @@ import com.ch.cbsmiddleware.dto.response.FullStatementResponse;
 import com.ch.cbsmiddleware.service.FullStatementService;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,18 +18,18 @@ public class FullStatementServiceImpl implements FullStatementService {
     public List<FullStatementResponse> getFullStatement(FullStatementRequest fullStatementRequest) {
         List<FullStatementResponse> fullStatementResponseList = List.of(
                 new FullStatementResponse(
-                        "11/11/1111",
-                        1111,
-                        1111,
-                        11,
-                        "status111"
+                        new Date(),
+                        "particular101",
+                        "t-Type101",
+                        1000,
+                        10000
                 ),
                 new FullStatementResponse(
-                        "22/22/2222",
-                        2222,
-                        2222,
-                        22,
-                        "status222"
+                        new Date(),
+                        "particular102",
+                        "t-Type102",
+                        2000,
+                        20000
                 )
         );
 
