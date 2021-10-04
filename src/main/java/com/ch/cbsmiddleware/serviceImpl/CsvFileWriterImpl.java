@@ -21,12 +21,8 @@ import java.nio.file.StandardOpenOption;
 public class CsvFileWriterImpl implements CsvFileWriter {
     @Override
     public void writeChequeRequest(ChequeRequestLog chequeRequestLog) {
-        String CSV_PATH = "src/main/resources/cheque_request.csv";
-        File csvFile = new File(CSV_PATH);
-        BufferedWriter writer;
-        CSVPrinter csvPrinter;
-
-
+        String csvPath = "src/main/resources/cheque_request.csv";
+        
         String[] columnNames = new String[]{
                 "id",
                 "cbsClientCode",
@@ -36,26 +32,8 @@ public class CsvFileWriterImpl implements CsvFileWriter {
                 "timestamp",
                 "status"
         };
-
-        try {
-            if(!csvFile.exists()){
-                writer = Files.newBufferedWriter(Paths.get(CSV_PATH));
-                csvPrinter = new CSVPrinter(writer,
-                        CSVFormat.DEFAULT.withHeader(columnNames));
-            }else{
-                writer = Files.newBufferedWriter(Paths.get(CSV_PATH),
-                        StandardOpenOption.APPEND, StandardOpenOption.CREATE);
-                csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
-            }
-
-            csvPrinter.printRecord(chequeRequestLog);
-
-            writer.flush();
-            writer.close();
-            csvPrinter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        
+        appendData(csvPath, columnNames, chequeRequestLog);
+        
     }
 }
