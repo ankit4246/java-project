@@ -37,7 +37,7 @@ public class CsvFileNameGenerator {
             }
         }
         logMetaDataRepo.save(logMetaData);
-        String csvPath = "src/main/resources/" + logMetaData.getStartDate() + "_" + logMetaData.getEndDate()+"_"+logMetaData.getLogType();
+        String csvPath = "src/main/resources/log/" + logMetaData.getStartDate() + "_" + logMetaData.getEndDate()+"_"+logMetaData.getLogType();
 
         return csvPath;
     }
