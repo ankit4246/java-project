@@ -29,7 +29,7 @@ public class AuthController {
     @PostMapping(value = "/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody AuthenticationRequest authenticationRequest)
             throws BadCredentialsException {
-        System.out.println(authenticationRequest);
+        //System .out.println(authenticationRequest);
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
                         authenticationRequest.getPassword())
