@@ -29,17 +29,21 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
         );
 
         //2. call proc
-        String voucherNumber = "82828ABS";
+        String voucherNumber = "ABY839C";
 
         //3. if voucher is blank, mark as failed otherwise completed
         if(voucherNumber.isBlank()){
             persisted.setStatus(Status.FAILED);
             internalFundTransferRepo.save(persisted);
+            csvFileWriter.writeInternalFundTransferDetail(persisted);
             throw new RuntimeException(); //TODO: Make custom exception TransactionFailure
         }
 
-        persisted.setStatus(Status.COMPLETED);
-        persisted.setVoucherNumber(voucherNumber);
+
+        persisted
+                .setStatus(Status.COMPLETED)
+                .setVoucherNumber(voucherNumber);
+
         internalFundTransferRepo.save(persisted);
 
         csvFileWriter.writeInternalFundTransferDetail(persisted);
