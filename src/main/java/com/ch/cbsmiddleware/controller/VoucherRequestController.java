@@ -17,14 +17,10 @@ import javax.validation.Valid;
  * @project cbs-middleware
  */
 @RestController
+@RequiredArgsConstructor
 public class VoucherRequestController extends BaseController{
 
     private final VoucherRequestService voucherRequestService;
-
-    public VoucherRequestController(ResponseGenerator responseGenerator, VoucherRequestService voucherRequestService) {
-        super(responseGenerator);
-        this.voucherRequestService = voucherRequestService;
-    }
 
     @PostMapping("/request-voucher")
     public ResponseEntity<?> requestVoucher(@Valid @RequestBody VoucherRequest request){

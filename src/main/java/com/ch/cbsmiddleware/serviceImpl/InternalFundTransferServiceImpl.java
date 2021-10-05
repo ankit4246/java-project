@@ -3,8 +3,9 @@ package com.ch.cbsmiddleware.serviceImpl;
 import com.ch.cbsmiddleware.dto.request.InternalFundTransferRequest;
 import com.ch.cbsmiddleware.dto.response.VoucherData;
 import com.ch.cbsmiddleware.models.InternalFundTransfer;
-import com.ch.cbsmiddleware.models.TransactionStatus;
+import com.ch.cbsmiddleware.models.Status;
 import com.ch.cbsmiddleware.repo.InternalFundTransferRepo;
+import com.ch.cbsmiddleware.service.CsvFileWriter;
 import com.ch.cbsmiddleware.service.InternalFundTransferService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 public class InternalFundTransferServiceImpl implements InternalFundTransferService {
 
     private final InternalFundTransferRepo internalFundTransferRepo;
+    private final CsvFileWriter csvFileWriter;
 
     @Override
     public VoucherData executeInternalFundTransfer(InternalFundTransferRequest request) {
@@ -27,18 +29,25 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
         );
 
         //2. call proc
-        String voucherNumber = "82828ABS";
+        String voucherNumber = "ABY839C";
 
         //3. if voucher is blank, mark as failed otherwise completed
         if(voucherNumber.isBlank()){
-            persisted.setTransactionStatus(TransactionStatus.FAILED);
+            persisted.setStatus(Status.FAILED);
             internalFundTransferRepo.save(persisted);
+            csvFileWriter.writeInternalFundTransferDetail(persisted);
             throw new RuntimeException(); //TODO: Make custom exception TransactionFailure
         }
 
-        persisted.setTransactionStatus(TransactionStatus.COMPLETED);
-        persisted.setVoucherNumber(voucherNumber);
+
+        persisted
+                .setStatus(Status.COMPLETED)
+                .setVoucherNumber(voucherNumber);
+
         internalFundTransferRepo.save(persisted);
+
+        csvFileWriter.writeInternalFundTransferDetail(persisted);
+
         return VoucherData.builder()
                 .voucherNumber(voucherNumber)
                 .build();

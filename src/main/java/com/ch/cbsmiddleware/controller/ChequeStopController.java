@@ -15,14 +15,10 @@ import javax.validation.Valid;
  * @Project cbs-middleware
  */
 @RestController
+@RequiredArgsConstructor
 public class ChequeStopController extends BaseController {
 
     private final ChequeStopService chequeStopService;
-
-    public ChequeStopController(ResponseGenerator responseGenerator, ChequeStopService chequeStopService) {
-        super(responseGenerator);
-        this.chequeStopService = chequeStopService;
-    }
 
     @PostMapping("/stop-cheque")
     public ResponseEntity<?> stopCheque(@Valid @RequestBody ChequeStopRequest chequeStopRequest) {

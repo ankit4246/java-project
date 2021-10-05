@@ -103,7 +103,7 @@ public class TransactionDetail {
                 .clientCommissionAmount(request.getClientCommissionAmount())
                 .remarks(request.getRemarks())
                 .serviceCode(request.getServiceCode())
-                .transactionStatus(TransactionStatus.PENDING)
+                .transactionStatus(Status.PENDING)
                 .build();
     }
 }

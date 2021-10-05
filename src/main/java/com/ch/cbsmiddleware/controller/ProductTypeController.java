@@ -16,14 +16,10 @@ import javax.validation.constraints.NotBlank;
  * @project cbs-middleware
  */
 @RestController
+@RequiredArgsConstructor
 public class ProductTypeController extends BaseController{
 
     private final ProductTypeService productTypeService;
-
-    public ProductTypeController(ResponseGenerator responseGenerator, ProductTypeService productTypeService) {
-        super(responseGenerator);
-        this.productTypeService = productTypeService;
-    }
 
     @GetMapping("list-product-types")
     public ResponseEntity<?> listProductTypesOfClient(@NotBlank @RequestParam("cbsClientCode") String cbsClientCode ){
