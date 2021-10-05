@@ -1,6 +1,6 @@
 package com.ch.cbsmiddleware.serviceImpl;
 
-import com.ch.cbsmiddleware.dto.request.CustomerDetailByCientCodeRequest;
+import com.ch.cbsmiddleware.dto.request.CustomerDetailByClientCodeRequest;
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByCustomerCodeRequest;
 import com.ch.cbsmiddleware.dto.response.CustomerDetailByClientCodeResponse;
 import com.ch.cbsmiddleware.dto.response.CustomerDetailByCustomerCodeResponse;
@@ -30,7 +30,7 @@ public class CustomerDetailServiceImpl implements CustomerDetailService {
     }
 
     @Override
-    public List<CustomerDetailByClientCodeResponse> getCustomerDetailByClientCode(CustomerDetailByCientCodeRequest customerDetailByCientCodeRequest) {
+    public List<CustomerDetailByClientCodeResponse> getCustomerDetailByClientCode(CustomerDetailByClientCodeRequest customerDetailByCientCodeRequest) {
         List<CustomerDetailByClientCodeResponse> customerDetailList = List.of(
                 new CustomerDetailByClientCodeResponse(
                         "cusCode101",
