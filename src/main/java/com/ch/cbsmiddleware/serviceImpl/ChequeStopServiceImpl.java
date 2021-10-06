@@ -41,7 +41,7 @@ public class ChequeStopServiceImpl implements ChequeStopService {
         chequeRequestRepo.save(chequeRequestLog);
 
         //Write to a csv file
-        csvFileWriter.writeChequeRequest(chequeRequestLog);
+//        csvFileWriter.writeChequeRequest(chequeRequestLog);
 
     }
 }

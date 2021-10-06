@@ -3,7 +3,8 @@
 
 <mapper namespace="com.ch.cbsmiddleware.mapper.AccountListProcMapper">
 
-    <select id="getAcountListByCustomerCode" resultType="com.ch.cbsmiddleware.dto.response.AccountListResponse"
+    <select id="getAcountListByCustomerCode"
+            resultType="com.ch.cbsmiddleware.dto.response.AccountListResponse"
     statementType="CALLABLE">
         {call Code_accountlist_by_customercode(#{customerCode })}
     </select>

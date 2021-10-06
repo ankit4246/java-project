@@ -21,6 +21,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AccountListServiceImpl implements AccountListService {
+
     private final MyBatisConfig myBatisConfig;
 
     @Override
@@ -32,7 +33,7 @@ public class AccountListServiceImpl implements AccountListService {
 
             List<AccountListResponse> accounts = session.selectList("getAcountListByCustomerCode", accountListRequest.getCustomerCode());
 
-            System.out.println(accounts);
+            //System.out.println(accounts);
             session.close();
 
             return accounts;

@@ -46,7 +46,7 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
 
         internalFundTransferRepo.save(persisted);
 
-        csvFileWriter.writeInternalFundTransferDetail(persisted);
+//        csvFileWriter.writeInternalFundTransferDetail(persisted);
 
         return VoucherData.builder()
                 .voucherNumber(voucherNumber)
