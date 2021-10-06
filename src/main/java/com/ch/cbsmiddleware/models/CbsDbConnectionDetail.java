@@ -18,7 +18,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cbs_db_connection_detail")
-public class CBSDBConnectionDetail {
+public class CbsDbConnectionDetail {
     @Id
     @SequenceGenerator(name = "cbs_db_connection_detail_sequence_gen",
             sequenceName ="cbs_db_connection_detail_sequence",allocationSize = 1)
