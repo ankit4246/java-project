@@ -13,5 +13,5 @@ import java.util.List;
 @Mapper
 public interface BalanceEnquiryProcMapper {
     List<BalanceEnquiryByCustomerCodeResponse> getBalanceByCustomerCode(String customerCode);
-    List<BalanceEnquiryByAccountNumberResponse> getBalanceByAccNumber(String accNumber);
+    BalanceEnquiryByAccountNumberResponse getBalanceByAccountNumber(String accountNumber);
 }

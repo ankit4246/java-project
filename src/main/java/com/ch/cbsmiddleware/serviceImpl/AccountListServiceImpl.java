@@ -33,7 +33,6 @@ public class AccountListServiceImpl implements AccountListService {
 
             List<AccountListResponse> accounts = session.selectList("getAcountListByCustomerCode", accountListRequest.getCustomerCode());
 
-            //System.out.println(accounts);
             session.close();
 
             return accounts;

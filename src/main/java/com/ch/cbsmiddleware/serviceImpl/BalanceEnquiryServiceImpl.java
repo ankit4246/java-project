@@ -28,13 +28,12 @@ public class BalanceEnquiryServiceImpl implements BalanceEnquiryService {
     @Override
     public List<BalanceEnquiryByCustomerCodeResponse> getBalanceByCustomerCode(BalanceEnquiryByCustomerCodeRequest balanceEnquiryByCustomerCodeRequest) {
 
-        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(balanceEnquiryByCustomerCodeRequest.getCustomerCode());
+        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(balanceEnquiryByCustomerCodeRequest.getCbsClientCode());
 
         SqlSession session = factory.openSession();
 
         List<BalanceEnquiryByCustomerCodeResponse> accounts = session.selectList("getBalanceByCustomerCode", balanceEnquiryByCustomerCodeRequest.getCustomerCode());
 
-        //System.out.println(accounts);
         session.close();
 
         return accounts;
@@ -42,14 +41,15 @@ public class BalanceEnquiryServiceImpl implements BalanceEnquiryService {
 
     @Override
     public BalanceEnquiryByAccountNumberResponse getBalanceByAccountNumber(BalanceEnquiryByAccountNumberRequest balanceEnquiryByAccountNumberRequest) {
-        BalanceEnquiryByAccountNumberResponse balanceEnquiryByAccountNumberResponse = new BalanceEnquiryByAccountNumberResponse(
-                "acntNo101",
-                10000,
-                1000,
-                10,
-                "status101"
-        );
 
-        return balanceEnquiryByAccountNumberResponse;
+        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(balanceEnquiryByAccountNumberRequest.getCbsClientCode());
+
+        SqlSession session = factory.openSession();
+
+        BalanceEnquiryByAccountNumberResponse accounts = session.selectOne("getBalanceByAccNumber", balanceEnquiryByAccountNumberRequest.getAccountNumber());
+
+        session.close();
+
+        return accounts;
     }
 }

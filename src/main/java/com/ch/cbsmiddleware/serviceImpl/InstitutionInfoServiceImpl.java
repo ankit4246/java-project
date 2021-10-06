@@ -1,8 +1,12 @@
 package com.ch.cbsmiddleware.serviceImpl;
 
+import com.ch.cbsmiddleware.config.MyBatisConfig;
 import com.ch.cbsmiddleware.dto.response.BranchData;
 import com.ch.cbsmiddleware.dto.response.InstitutionData;
 import com.ch.cbsmiddleware.service.InstitutionInfoService;
+import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,27 +16,33 @@ import java.util.List;
  * @project cbs-middleware
  */
 @Service
+@RequiredArgsConstructor
 public class InstitutionInfoServiceImpl implements InstitutionInfoService {
+
+    private final MyBatisConfig myBatisConfig;
 
     @Override
     public List<BranchData> findBranchList(String cbsClientCode) {
-        return List.of(
-                new BranchData("123", "KTM", "Branch", "", "", "", "", ""),
-                new BranchData("345", "LALIT", "Branch", "", "", "", "", ""),
-                new BranchData("678", "PKL", "Branch", "", "", "", "", "")
-        );
+        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(cbsClientCode);
+
+        SqlSession session = factory.openSession();
+
+        List<BranchData> branchDataList = session.selectList("findBranchList");
+
+        session.close();
+
+        return branchDataList;
     }
 
     @Override
     public InstitutionData getInstitutionData(String cbsClientCode) {
-        return InstitutionData.builder()
-                .cbsClientCode("737")
-                .name("Ximek")
-                .contactNo("982889829")
-                .headOfficeManagerName("Ram Sharma")
-                .headOfficeManagerNumber("982899922")
-                .address("Kathmandu")
-                .email("info@ximek.com")
-                .build();
+
+        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(cbsClientCode);
+
+        SqlSession session = factory.openSession();
+        InstitutionData institutionData = session.selectOne("getInstitutionData");
+        session.close();
+
+        return institutionData;
     }
 }
