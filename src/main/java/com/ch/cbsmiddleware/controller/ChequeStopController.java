@@ -1,8 +1,8 @@
 package com.ch.cbsmiddleware.controller;
 
 import com.ch.cbsmiddleware.dto.request.ChequeStopRequest;
-import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.ChequeStopService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
