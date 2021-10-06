@@ -4,6 +4,7 @@ import com.ch.cbsmiddleware.models.LogMetaData;
 import com.ch.cbsmiddleware.repo.LogMetaDataRepo;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -15,6 +16,13 @@ import java.util.Optional;
 public class CsvFileNameGenerator {
 
     public String generate(LogMetaDataRepo logMetaDataRepo, String logType){
+        String csvBasePath = "src/main/resources/log";
+        File csvBaseFile = new File(csvBasePath);
+
+        if(!csvBaseFile.exists()){
+            csvBaseFile.mkdirs();
+        }
+
         int durationInDays = 7;
 
         LogMetaData logMetaData = LogMetaData.builder()
@@ -37,7 +45,7 @@ public class CsvFileNameGenerator {
             }
         }
         logMetaDataRepo.save(logMetaData);
-        String csvPath = "src/main/resources/log/" + logMetaData.getStartDate() + "_" + logMetaData.getEndDate()+"_"+logMetaData.getLogType();
+        String csvPath = csvBasePath +"/"+ logMetaData.getStartDate() + "_" + logMetaData.getEndDate()+"_"+logMetaData.getLogType();
 
         return csvPath;
     }
