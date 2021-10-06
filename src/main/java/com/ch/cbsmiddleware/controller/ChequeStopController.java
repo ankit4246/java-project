@@ -3,8 +3,6 @@ package com.ch.cbsmiddleware.controller;
 import com.ch.cbsmiddleware.dto.request.ChequeStopRequest;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.ChequeStopService;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +12,7 @@ import javax.validation.Valid;
 
 /**
  * @author bimal on 9/26/21
- * @project cbs-middleware
+ * @Project cbs-middleware
  */
 @RestController
 @RequiredArgsConstructor

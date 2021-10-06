@@ -1,6 +1,6 @@
 package com.ch.cbsmiddleware.controller;
 
-import com.ch.cbsmiddleware.dto.request.CustomerDetailByCientCodeRequest;
+import com.ch.cbsmiddleware.dto.request.CustomerDetailByClientCodeRequest;
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByCustomerCodeRequest;
 import com.ch.cbsmiddleware.service.CustomerDetailService;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ public class CustomerDetailController extends BaseController {
     private final CustomerDetailService customerDetailService;
 
     @GetMapping(value = "/client-code")
-    public ResponseEntity<?> getCustomerDetailByClientCode(@Valid @RequestBody CustomerDetailByCientCodeRequest customerDetailRequest) {
+    public ResponseEntity<?> getCustomerDetailByClientCode(@Valid @RequestBody CustomerDetailByClientCodeRequest customerDetailRequest) {
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse(
                         "retrieve.success","Customer Detail",

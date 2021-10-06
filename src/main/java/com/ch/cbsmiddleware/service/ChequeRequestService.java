@@ -8,5 +8,5 @@ import com.ch.cbsmiddleware.dto.response.ChequeRequestResponse;
  * @Author Om Narayan Singh on 9/26/21
  */
 public interface ChequeRequestService {
-    ChequeRequestResponse getChequeRequest(ChequeRequest chequeRequest);
+    void getChequeRequest(ChequeRequest chequeRequest);
 }

@@ -3,6 +3,7 @@ package com.ch.cbsmiddleware.dto.request;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * @Project cbs-middleware
@@ -15,7 +16,9 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class BalanceEnquiryByAccountNumberRequest {
     @NotBlank
+    @NotNull
     private String cbsClientCode;
     @NotBlank
+    @NotNull
     private String accountNumber;
 }

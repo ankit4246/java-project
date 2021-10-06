@@ -12,12 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ChequeRequestServiceImpl implements ChequeRequestService {
     @Override
-    public ChequeRequestResponse getChequeRequest(ChequeRequest chequeRequest) {
-        ChequeRequestResponse chequeRequestResponse = new ChequeRequestResponse(
-                101,
-                "status text 101",
-                "response message 101"
-        );
-        return chequeRequestResponse;
+    public void getChequeRequest(ChequeRequest chequeRequest) {
     }
 }

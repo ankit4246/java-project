@@ -19,17 +19,17 @@ public class MiniStatementServiceImpl implements MiniStatementService {
         List<MiniStatementResponse> miniStatementResponseList = List.of(
                 new MiniStatementResponse(
                         new Date(),
+                        "particular101",
+                        "transactionType101",
                         1000,
-                        1000,
-                        10,
-                        "stts10"
+                        10000
                 ),
                 new MiniStatementResponse(
                         new Date(),
-                        1000,
-                        1000,
-                        10,
-                        "stts10"
+                        "particular102",
+                        "transactionType102",
+                        2000,
+                        20000
                 )
         );
         return miniStatementResponseList;
