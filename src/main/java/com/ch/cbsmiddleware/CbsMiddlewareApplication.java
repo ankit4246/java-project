@@ -19,30 +19,24 @@ public class CbsMiddlewareApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		        String dbUrl = "jdbc:postgresql://localhost:5432/";
-//        CbsDbConnectionDetail connectionDetail =
-//                CbsDbConnectionDetail.builder()
-//                        .cbsClientCode("1")
-//                        .dbUserName("postgres")
-//                        .dbPassword("postgres")
-//                        .dbDriver("org.postgresql.Driver")
-//                        .dbUrl(dbUrl+"client1")
-//                        .dbName("client1")
-//                        .build();
-//
-//        CbsDbConnectionDetail connectionDetail2 =
-//                CbsDbConnectionDetail.builder()
-//                        .cbsClientCode("2")
-//                        .dbUserName("postgres")
-//                        .dbPassword("postgres")
-//                        .dbDriver("org.postgresql.Driver")
-//                        .dbUrl(dbUrl+"client2")
-//                        .dbName("client2")
-//                        .build();
-//
-//
-//        cbsDbConnectionDetailRepo.save(connectionDetail);
-//        cbsDbConnectionDetailRepo.save(connectionDetail2);
+				/*String host = "202.51.1.183";
+				String port = "1433";
+				String userName = "sa";
+				String dbName = "Subharabhma_Demo";
+				String dbPassword = "lunev@#6520$sil@v#rl";
+				String dbDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+				String dbUrl = "jdbc:sqlserver://"+host+":"+port+";databaseName="+dbName;
+        CbsDbConnectionDetail connectionDetail =
+                CbsDbConnectionDetail.builder()
+                        .cbsClientCode("1")
+                        .dbUserName(userName)
+                        .dbPassword(dbPassword)
+                        .dbDriver(dbDriver)
+                        .dbUrl(dbUrl)
+                        .dbName(dbName)
+                        .build();
+
+        cbsDbConnectionDetailRepo.save(connectionDetail);*/
 
 	}
 }

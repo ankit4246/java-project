@@ -17,5 +17,6 @@
     </environments>
     <mappers>
         <mapper resource="mybatis/AccountMapper.xml"/>
+        <mapper resource="mybatis/AccountListProcMapper.xml"/>
     </mappers>
 </configuration>
