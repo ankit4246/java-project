@@ -7,7 +7,7 @@
             resultType="com.ch.cbsmiddleware.dto.response.VoucherData"
             statementType="CALLABLE"
             parameterType="map">
-        {call Code_cheque_request(${fromAccountNumber},${toAccountNumber},${paymentAmount},${remarks},${transactionTimestamp})}
+        {call CODE_internal_fund_tarnsfer(${fromAccountNumber},${toAccountNumber},${paymentAmount},${remarks},${transactionTimestamp})}
     </select>
 
 

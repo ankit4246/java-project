@@ -35,8 +35,6 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
                 InternalFundTransfer.buildFromRequest(request)
         );
 
-
-
         SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(request.getCbsClientCode());
 
         SqlSession session = factory.openSession();
@@ -52,7 +50,6 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
         //2. call proc
         //String voucherNumber = "ABY839C";
         String voucherNumber = voucherData.getVoucherNumber();
-
 
 
         //3. if voucher is blank, mark as failed otherwise completed
