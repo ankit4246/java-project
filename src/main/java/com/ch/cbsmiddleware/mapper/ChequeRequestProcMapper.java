@@ -9,5 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ChequeRequestProcMapper {
-    void getChequeReq(String accNumber);
+    void requestCheque(String cbsClientCode,String accountNumber);
 }

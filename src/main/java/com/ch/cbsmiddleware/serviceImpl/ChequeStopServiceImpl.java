@@ -2,6 +2,7 @@ package com.ch.cbsmiddleware.serviceImpl;
 
 import com.ch.cbsmiddleware.config.MyBatisConfig;
 import com.ch.cbsmiddleware.dto.request.ChequeStopRequest;
+import com.ch.cbsmiddleware.dto.response.ChequeRequestResponse;
 import com.ch.cbsmiddleware.models.ChequeRequestLog;
 import com.ch.cbsmiddleware.models.ChequeRequestType;
 import com.ch.cbsmiddleware.models.Status;
@@ -30,7 +31,7 @@ public class ChequeStopServiceImpl implements ChequeStopService {
     private final MyBatisConfig myBatisConfig;
     
     @Override
-    public void stopCheque(ChequeStopRequest request){
+    public ChequeRequestResponse stopCheque(ChequeStopRequest request){
         ChequeRequestLog chequeRequestLog = ChequeRequestLog.builder()
                 .cbsClientCode(request.getCbsClientCode())
                 .accountNumber(request.getAccountNumber())
@@ -48,11 +49,14 @@ public class ChequeStopServiceImpl implements ChequeStopService {
         params.put("accountNumber",request.getAccountNumber());
         params.put("chequeNumber", request.getChequeNumber());
 
-        session.selectOne("stopCheque", params);
+        ChequeRequestResponse chequeRequestResponse = session.selectOne("stopCheque", params);
 
         chequeRequestLog.setStatus(Status.COMPLETED);
 
         session.close();
+
+        return chequeRequestResponse;
+
         //chequeRequestRepo.save(chequeRequestLog);
 
         //Write to a csv file

@@ -3,10 +3,11 @@
 
 <mapper namespace="com.ch.cbsmiddleware.mapper.ChequeRequestProcMapper">
 
-    <select id="getChequeReq"
+    <select id="requestCheque"
             resultType="com.ch.cbsmiddleware.dto.response.ChequeRequestResponse"
-            statementType="CALLABLE">
-        {call Code_cheque_request(#{accNumber})}
+            statementType="CALLABLE"
+            parameterType="map">
+        {call Code_cheque_request(${cbsClientCode},${accountNumber})}
     </select>
 
 

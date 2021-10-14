@@ -1,5 +1,6 @@
 package com.ch.cbsmiddleware.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.validation.constraints.Min;
