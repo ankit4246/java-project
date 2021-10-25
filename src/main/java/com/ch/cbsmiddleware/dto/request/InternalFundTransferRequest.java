@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class InternalFundTransferRequest {
+public class InternalFundTransferRequest{
     @NotBlank
     private String cbsClientCode;
     @NotBlank
@@ -29,5 +29,6 @@ public class InternalFundTransferRequest {
     @NotBlank
     private String remarks;
     @NotNull
+    //@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Timestamp transactionTimestamp;
 }

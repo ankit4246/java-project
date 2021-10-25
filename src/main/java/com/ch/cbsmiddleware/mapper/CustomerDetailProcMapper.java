@@ -1,7 +1,6 @@
 package com.ch.cbsmiddleware.mapper;
 
-import com.ch.cbsmiddleware.dto.response.CustomerDetailByClientCodeResponse;
-import com.ch.cbsmiddleware.dto.response.CustomerDetailByCustomerCodeResponse;
+import com.ch.cbsmiddleware.dto.response.CustomerDetailResponse;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -12,6 +11,6 @@ import java.util.List;
  */
 @Mapper
 public interface CustomerDetailProcMapper {
-    List<CustomerDetailByClientCodeResponse> getCustomerDetailByClientCode(String cbsClientCode);
-    CustomerDetailByCustomerCodeResponse getCustomerDetailByCustomerCode(String customerCode);
+    List<CustomerDetailResponse> getCustomerDetailByClientCode(String branchCode);
+    CustomerDetailResponse getCustomerDetailByCustomerCode(String customerCode);
 }

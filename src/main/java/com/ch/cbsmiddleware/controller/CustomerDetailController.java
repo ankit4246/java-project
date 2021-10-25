@@ -7,10 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -28,7 +25,7 @@ public class CustomerDetailController extends BaseController {
     private final CustomerDetailService customerDetailService;
 
     @ApiOperation(value = "Lists Customer details on a specific Client")
-    @GetMapping(value = "/client-code")
+    @PostMapping(value = "/client-code")
     public ResponseEntity<?> getCustomerDetailByClientCode(@Valid @RequestBody CustomerDetailByClientCodeRequest customerDetailRequest) {
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse(
@@ -38,7 +35,7 @@ public class CustomerDetailController extends BaseController {
     }
 
     @ApiOperation(value = "Get details of a specific Customer")
-    @GetMapping(value = "/customer-code")
+    @PostMapping(value = "/customer-code")
     public ResponseEntity<?> getCustomerDetailByCustomerCode(@Valid @RequestBody CustomerDetailByCustomerCodeRequest customerDetailByCustomerCodeRequest) {
          return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse(

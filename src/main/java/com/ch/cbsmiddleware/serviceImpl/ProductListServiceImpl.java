@@ -1,7 +1,12 @@
 package com.ch.cbsmiddleware.serviceImpl;
 
+import com.ch.cbsmiddleware.config.MyBatisConfig;
+import com.ch.cbsmiddleware.dto.response.AccountListResponse;
 import com.ch.cbsmiddleware.dto.response.ProductData;
 import com.ch.cbsmiddleware.service.ProductListService;
+import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,14 +16,21 @@ import java.util.List;
  * @project cbs-middleware
  */
 @Service
+@RequiredArgsConstructor
 public class ProductListServiceImpl implements ProductListService {
+
+    private final MyBatisConfig myBatisConfig;
 
     @Override
     public List<ProductData> listProducts(String cbsClientCode, String productTypeCode) {
-        return List.of(
-                new ProductData("123", "ABC", "012", "Saving Account"),
-                new ProductData("123", "ABC", "012", "Saving Account")
+        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(cbsClientCode);
 
-        );
+        SqlSession session = factory.openSession();
+
+        List<ProductData> productDataList = session.selectList("getProductList");
+
+        session.close();
+
+        return productDataList;
     }
 }

@@ -3,17 +3,14 @@ package com.ch.cbsmiddleware.serviceImpl;
 import com.ch.cbsmiddleware.config.MyBatisConfig;
 import com.ch.cbsmiddleware.dto.request.BalanceEnquiryByAccountNumberRequest;
 import com.ch.cbsmiddleware.dto.request.BalanceEnquiryByCustomerCodeRequest;
-import com.ch.cbsmiddleware.dto.response.AccountListResponse;
 import com.ch.cbsmiddleware.dto.response.BalanceEnquiryByAccountNumberResponse;
 import com.ch.cbsmiddleware.dto.response.BalanceEnquiryByCustomerCodeResponse;
-import com.ch.cbsmiddleware.dto.response.CustomerDetailByClientCodeResponse;
 import com.ch.cbsmiddleware.service.BalanceEnquiryService;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
