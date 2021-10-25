@@ -1,9 +1,7 @@
 
 package com.ch.cbsmiddleware.serviceImpl;
 
-import com.ch.cbsmiddleware.models.ChequeRequestLog;
-import com.ch.cbsmiddleware.models.InternalFundTransfer;
-import com.ch.cbsmiddleware.models.LogTypes;
+import com.ch.cbsmiddleware.models.*;
 import com.ch.cbsmiddleware.repo.LogMetaDataRepo;
 import com.ch.cbsmiddleware.service.CsvFileWriter;
 import lombok.RequiredArgsConstructor;
@@ -51,5 +49,53 @@ public class CsvFileWriterImpl implements CsvFileWriter {
         };
 
         appendData(cvsPath, columnNames, internalFundTransfer);
+    }
+
+    @Override
+    public void writeTransactionDetail(TransactionDetail transactionDetail) {
+        String cvsPath = csvFileNameGenerator.generate(logMetaDataRepo, LogTypes.TRANSACTION_REQUEST);
+
+        String[] columnNames = new String[]{
+                "cbsClientCode",
+                "mobileNumber",
+                "accountNumber",
+                "beneficiaryNumber",
+                "paymentAmount",
+                "paymentGL",
+                "transactionTimestamp",
+                "customerCommissionGL",
+                "customerCommissionAmount",
+                "gatewayCommissionGL",
+                "gatewayCommissionAmount",
+                "clientCommissionGL",
+                "clientCommissionAmount",
+                "remarks",
+                "serviceCode",
+                "transactionId",
+                "voucherNumber",
+                "status"
+        };
+
+        appendData(cvsPath, columnNames, transactionDetail);
+    }
+
+    @Override
+    public void writeVoucherRequest(VoucherRequestLog voucherRequestLog) {
+        String cvsPath = csvFileNameGenerator.generate(logMetaDataRepo, LogTypes.VOUCHER_REQUEST);
+
+        String[] columnNames = new String[]{
+                "cbsClientCode",
+                "mobileNumber",
+                "transactionId",
+                "transactionTimestamp",
+                "customerCommissionGL",
+                "customerCommissionAmount",
+                "clientCommissionGL",
+                "clientCommissionAmount",
+                "status"
+        };
+
+        appendData(cvsPath, columnNames, voucherRequestLog);
+
     }
 }

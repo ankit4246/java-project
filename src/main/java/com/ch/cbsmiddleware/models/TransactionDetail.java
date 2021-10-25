@@ -77,7 +77,7 @@ public class TransactionDetail {
     @Column(name = "service_code", nullable = false)
     private String serviceCode;
 
-    @Column(name = "transaction_id")
+    @Column(name = "transaction_id", unique = true)
     private String transactionId;
 
     @Column(name = "voucher_number")
@@ -105,5 +105,15 @@ public class TransactionDetail {
                 .serviceCode(request.getServiceCode())
                 .transactionStatus(Status.PENDING)
                 .build();
+    }
+
+    //Format for apache commons csv writer
+    @Override
+    public String toString() {
+        return cbsClientCode+","+mobileNumber+","+accountNumber+","+beneficiaryNumber+","+paymentAmount+"," +
+                paymentGL+","+transactionTimestamp+","+customerCommissionGL+","+customerCommissionAmount+","+
+                gatewayCommissionGL+","+gatewayCommissionAmount+","+clientCommissionGL+","+
+                clientCommissionAmount+","+remarks+","+serviceCode+","+transactionId+","+
+                voucherNumber+","+ transactionStatus;
     }
 }
