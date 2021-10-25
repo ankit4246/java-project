@@ -1,6 +1,7 @@
 package com.ch.cbsmiddleware.service;
 
 import com.ch.cbsmiddleware.dto.request.ChequeStopRequest;
+import com.ch.cbsmiddleware.dto.response.ChequeRequestResponse;
 
 import java.io.IOException;
 
@@ -9,5 +10,5 @@ import java.io.IOException;
  * @project cbs-middleware
  */
 public interface ChequeStopService {
-    void stopCheque(ChequeStopRequest request);
+    ChequeRequestResponse stopCheque(ChequeStopRequest request);
 }

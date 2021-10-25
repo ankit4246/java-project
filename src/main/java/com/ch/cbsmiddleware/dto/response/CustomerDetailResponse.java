@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @ToString
-public class CustomerDetailByClientCodeResponse {
+public class CustomerDetailResponse {
     @NotBlank
     @NotNull
     private String customerCode;

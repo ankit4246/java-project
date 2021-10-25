@@ -3,6 +3,8 @@ package com.ch.cbsmiddleware.controller;
 import com.ch.cbsmiddleware.dto.response.HttpResponse;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.ProductListService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +20,12 @@ import javax.validation.constraints.NotBlank;
  */
 @RestController
 @RequiredArgsConstructor
+@Api(tags = "Product list API")
 public class ProductListController extends BaseController{
 
     private final ProductListService productListService;
 
+    @ApiOperation(value = "Lists all products listed within a particular Product-type")
     @GetMapping("/list-product")
     public ResponseEntity<?> listProducts(@NotBlank @RequestParam("cbsClientCode") String cbsClientCode,
                                           @RequestParam(value = "productTypeCode", required = false) String productTypeCode){

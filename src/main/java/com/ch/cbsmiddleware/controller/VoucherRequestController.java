@@ -4,6 +4,8 @@ import com.ch.cbsmiddleware.dto.request.VoucherRequest;
 import com.ch.cbsmiddleware.dto.response.HttpResponse;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.VoucherRequestService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +20,12 @@ import javax.validation.Valid;
  */
 @RestController
 @RequiredArgsConstructor
+@Api(tags = "Voucher Request API")
 public class VoucherRequestController extends BaseController{
 
     private final VoucherRequestService voucherRequestService;
 
+    @ApiOperation(value = "Request for a Voucher number")
     @PostMapping("/request-voucher")
     public ResponseEntity<?> requestVoucher(@Valid @RequestBody VoucherRequest request){
         return ResponseEntity.ok(

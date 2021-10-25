@@ -1,12 +1,14 @@
 package com.ch.cbsmiddleware.serviceImpl;
 
+import com.ch.cbsmiddleware.config.MyBatisConfig;
 import com.ch.cbsmiddleware.dto.request.AccountListRequest;
 import com.ch.cbsmiddleware.dto.response.AccountListResponse;
-import com.ch.cbsmiddleware.dto.response.CustomerDetailByClientCodeResponse;
 import com.ch.cbsmiddleware.service.AccountListService;
+import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,26 +16,23 @@ import java.util.List;
  * @Author mave on 9/26/21
  */
 @Service
+@RequiredArgsConstructor
 public class AccountListServiceImpl implements AccountListService {
+
+    private final MyBatisConfig myBatisConfig;
+
     @Override
     public List<AccountListResponse> getAccountListByCustomerCode(AccountListRequest accountListRequest) {
-        List<AccountListResponse> accountListResponses = List.of(
-                new AccountListResponse("acntNo101",
-                        "acntName101",
-                        "currancyCode101",
-                        "Dollar",
-                        "branchCode101",
-                        "accoutnSatus101",
-                        "accountType101"),
-                new AccountListResponse("acntNo102",
-                        "acntName102",
-                        "currancyCode102",
-                        "NRP",
-                        "branchCode102",
-                        "accoutnSatus102",
-                        "accountType102")
-        );
 
-        return accountListResponses;
+            SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(accountListRequest.getCbsClientCode());
+
+            SqlSession session = factory.openSession();
+
+            List<AccountListResponse> accounts = session.selectList("getAcountListByCustomerCode", accountListRequest.getCustomerCode());
+
+            session.close();
+
+            return accounts;
+
     }
 }

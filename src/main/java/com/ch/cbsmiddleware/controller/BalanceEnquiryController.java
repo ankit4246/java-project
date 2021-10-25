@@ -4,12 +4,11 @@ import com.ch.cbsmiddleware.dto.request.BalanceEnquiryByAccountNumberRequest;
 import com.ch.cbsmiddleware.dto.request.BalanceEnquiryByCustomerCodeRequest;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.BalanceEnquiryService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -21,21 +20,24 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(value = "/balance-enquiry")
 @RequiredArgsConstructor
+@Api(tags = "Balance Enquiry APIs")
 public class BalanceEnquiryController extends BaseController {
 
     private final BalanceEnquiryService balanceEnquiryService;
 
-    @GetMapping(value = "/customer-code")
+    @ApiOperation(value = "Lists remaining balance in all accounts associated with a particular Customer")
+    @PostMapping(value = "/customer-code")
     public ResponseEntity<?> getBalanceByCustomerCode(@Valid @RequestBody BalanceEnquiryByCustomerCodeRequest balanceEnquiryByCustomerCodeRequest) {
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("retrieve.success", "Balance Enquiry",balanceEnquiryService.getBalanceByCustomerCode(balanceEnquiryByCustomerCodeRequest))
+                responseGenerator.getSuccessResponse("retrieve.success", "Balance Enquiry", balanceEnquiryService.getBalanceByCustomerCode(balanceEnquiryByCustomerCodeRequest))
         );
     }
 
-    @GetMapping(value = "/account-number")
+    @ApiOperation(value = "Get remaining balance in a particular A/C number")
+    @PostMapping(value = "/account-number")
     public ResponseEntity<?> getBalanceByAccountNumber(@Valid @RequestBody BalanceEnquiryByAccountNumberRequest balanceEnquiryByAccountNumberRequest) {
         return ResponseEntity.ok(
-                responseGenerator.getSuccessResponse("retrieve.success","Balance Enquiry",balanceEnquiryService.getBalanceByAccountNumber(balanceEnquiryByAccountNumberRequest))
+                responseGenerator.getSuccessResponse("retrieve.success", "Balance Enquiry", balanceEnquiryService.getBalanceByAccountNumber(balanceEnquiryByAccountNumberRequest))
         );
     }
 }

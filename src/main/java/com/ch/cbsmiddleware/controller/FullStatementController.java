@@ -3,6 +3,8 @@ package com.ch.cbsmiddleware.controller;
 import com.ch.cbsmiddleware.dto.request.FullStatementRequest;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.FullStatementService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +22,12 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(value = "/full-statement")
 @RequiredArgsConstructor
+@Api(tags = "Full Statement API")
 public class FullStatementController extends BaseController {
 
     private final FullStatementService fullStatementService;
 
+    @ApiOperation(value = "Lists all transactions of a A/C number")
     @GetMapping(value = "/")
     public ResponseEntity<?> getFullStatement(@Valid @RequestBody FullStatementRequest fullStatementRequest) {
         return ResponseEntity.ok(
