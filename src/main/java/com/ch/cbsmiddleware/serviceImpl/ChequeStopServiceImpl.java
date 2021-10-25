@@ -46,6 +46,7 @@ public class ChequeStopServiceImpl implements ChequeStopService {
 
         SqlSession session = factory.openSession();
         Map<String, Object> params = new HashMap<>();
+        params.put("cbsClientCode", request.getCbsClientCode());
         params.put("accountNumber",request.getAccountNumber());
         params.put("chequeNumber", request.getChequeNumber());
 
@@ -55,12 +56,12 @@ public class ChequeStopServiceImpl implements ChequeStopService {
 
         session.close();
 
+            chequeRequestRepo.save(chequeRequestLog);
+
+            //Write to a csv file
+            csvFileWriter.writeChequeRequest(chequeRequestLog);
+
         return chequeRequestResponse;
-
-        //chequeRequestRepo.save(chequeRequestLog);
-
-        //Write to a csv file
-//        csvFileWriter.writeChequeRequest(chequeRequestLog);
 
     }
 }

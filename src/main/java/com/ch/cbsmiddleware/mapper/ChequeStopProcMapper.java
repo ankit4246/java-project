@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ChequeStopProcMapper {
-    void stopCheque(String accountNumber, String chequeNumber);
+    void stopCheque(String cbsClientCode, String accountNumber, String chequeNumber);
 }
