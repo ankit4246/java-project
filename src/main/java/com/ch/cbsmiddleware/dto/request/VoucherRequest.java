@@ -29,4 +29,12 @@ public class VoucherRequest {
 
     @NotNull
     private Timestamp transactionTimestamp;
+
+    private String customerCommissionGL;
+
+    private int customerCommissionAmount;
+
+    private String clientCommissionGL;
+
+    private int clientCommissionAmount;
 }

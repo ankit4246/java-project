@@ -5,6 +5,7 @@ import com.ch.cbsmiddleware.dto.response.TransactionData;
 import com.ch.cbsmiddleware.models.TransactionDetail;
 import com.ch.cbsmiddleware.models.Status;
 import com.ch.cbsmiddleware.repo.TransactionDetailRepo;
+import com.ch.cbsmiddleware.service.CsvFileWriter;
 import com.ch.cbsmiddleware.service.TransactionRequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 public class TransactionRequestServiceImpl implements TransactionRequestService {
 
     private final TransactionDetailRepo transactionDetailRepo;
+    private final CsvFileWriter csvFileWriter;
 
     @Override
     public TransactionData requestTransaction(TransactionRequest request) {
@@ -26,7 +28,7 @@ public class TransactionRequestServiceImpl implements TransactionRequestService 
         TransactionDetail persisted = transactionDetailRepo.save(TransactionDetail.buildFromRequest(request));
 
         //2. Call proc to get transaction id
-        String transactionId = "12345";
+        String transactionId = "4567";
 
         if (transactionId.isBlank()) {
             persisted.setTransactionStatus(Status.FAILED);
@@ -44,6 +46,9 @@ public class TransactionRequestServiceImpl implements TransactionRequestService 
         //5. Set voucherId in transaction_detail table
         persisted.setVoucherNumber(voucherNumber);
         transactionDetailRepo.save(persisted);
+
+
+        csvFileWriter.writeTransactionDetail(persisted);
 
         return TransactionData.builder()
                 .transactionId(transactionId)
