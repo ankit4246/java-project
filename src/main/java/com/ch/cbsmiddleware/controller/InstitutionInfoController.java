@@ -30,7 +30,6 @@ public class InstitutionInfoController extends BaseController {
     @ApiOperation(value = "Lists branches of a Client")
     @GetMapping("/branch-list")
     public ResponseEntity<?> findBranchList(@NotBlank @RequestParam("cbsClientCode")String cbsClientCode){
-        System.out.println(institutionInfoService);
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("retrieve.success","Branch List",
                         institutionInfoService.findBranchList(cbsClientCode))
