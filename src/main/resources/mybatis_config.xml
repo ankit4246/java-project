@@ -17,5 +17,14 @@
     </environments>
     <mappers>
         <mapper resource="mybatis/AccountMapper.xml"/>
+        <mapper resource="mybatis/AccountListProcMapper.xml"/>
+        <mapper resource="mybatis/BalanceEnquiryProcMapper.xml"/>
+        <mapper resource="mybatis/MiniStatementProcMapper.xml"/>
+        <mapper resource="mybatis/AboutInstitutionProcMapper.xml"/>
+        <mapper resource="mybatis/ChequeRequestProcMapper.xml"/>
+        <mapper resource="mybatis/ChequeStopProcMapper.xml"/>
+        <mapper resource="mybatis/InternalFundTransferProcMapper.xml"/>
+        <mapper resource="mybatis/CustomerDetailProcMapper.xml"/>
+        <mapper resource="mybatis/ProductListProcMapper.xml"/>
     </mappers>
 </configuration>

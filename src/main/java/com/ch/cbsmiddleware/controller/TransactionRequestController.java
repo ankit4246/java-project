@@ -4,6 +4,8 @@ import com.ch.cbsmiddleware.dto.request.TransactionRequest;
 import com.ch.cbsmiddleware.dto.response.HttpResponse;
 import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.TransactionRequestService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,11 +20,12 @@ import javax.validation.Valid;
  */
 @RestController
 @RequiredArgsConstructor
+@Api(tags = "Transaction request API")
 public class TransactionRequestController extends BaseController{
 
     private final TransactionRequestService transactionRequestService;
 
-
+    @ApiOperation(value = "Request for Transaction")
     @PostMapping("/transaction-request")
     public ResponseEntity<?> requestTransaction(@Valid @RequestBody TransactionRequest request){
         System.out.println(request);
