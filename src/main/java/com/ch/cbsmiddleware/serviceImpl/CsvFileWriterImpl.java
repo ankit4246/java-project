@@ -58,4 +58,17 @@ public class CsvFileWriterImpl implements CsvFileWriter {
         appendData(cvsPath, Fields.VOUCHER_REQUEST_LOG_FIELDS, voucherRequest);
 
     }
+
+    @Override
+    public void writeVoucherReversal(VoucherReversalLog voucherReversalLog) {
+        String cvsPath = csvFileNameGenerator.generate(logMetaDataRepo, LogTypes.VOUCHER_REVERSAL);
+
+        String[] columnNames = {
+            "voucherNo",
+            "status"
+        };
+
+        appendData(cvsPath, columnNames, voucherReversalLog);
+
+    }
 }

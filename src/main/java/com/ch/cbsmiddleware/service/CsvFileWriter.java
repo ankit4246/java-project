@@ -3,7 +3,7 @@ package com.ch.cbsmiddleware.service;
 import com.ch.cbsmiddleware.models.ChequeRequestLog;
 import com.ch.cbsmiddleware.models.InternalFundTransfer;
 import com.ch.cbsmiddleware.models.VoucherRequestLog;
-import com.ch.cbsmiddleware.models.VoucherRequestLogOld;
+import com.ch.cbsmiddleware.models.VoucherReversalLog;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -50,5 +50,6 @@ public interface CsvFileWriter {
     void writeChequeRequest(ChequeRequestLog chequeRequestLog);
     void writeInternalFundTransferDetail(InternalFundTransfer internalFundTransfer);
     void writeVoucherRequest(VoucherRequestLog voucherRequestLog);
+    void writeVoucherReversal(VoucherReversalLog voucherReversalLog);
 
 }

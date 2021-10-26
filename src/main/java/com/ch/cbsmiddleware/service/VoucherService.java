@@ -8,6 +8,8 @@ import com.ch.cbsmiddleware.dto.response.RequestVoucherData;
  * @project cbs-middleware
  */
 
-public interface VoucherRequestService {
+public interface VoucherService {
     RequestVoucherData requestVoucher(VoucherRequest request);
+
+    String reverseVoucher(String cbsClientCode, String voucherNo);
 }

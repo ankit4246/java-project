@@ -27,5 +27,6 @@
         <mapper resource="mybatis/CustomerDetailProcMapper.xml"/>
         <mapper resource="mybatis/ProductListProcMapper.xml"/>
         <mapper resource="mybatis/VoucherRequestProcMapper.xml"/>
+        <mapper resource="mybatis/VoucherReversalProcMapper.xml"/>
     </mappers>
 </configuration>

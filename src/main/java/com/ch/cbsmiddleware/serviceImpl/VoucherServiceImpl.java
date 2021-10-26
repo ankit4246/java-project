@@ -5,18 +5,17 @@ import com.ch.cbsmiddleware.dto.request.VoucherRequest;
 import com.ch.cbsmiddleware.dto.response.RequestVoucherData;
 import com.ch.cbsmiddleware.dto.response.VoucherData;
 import com.ch.cbsmiddleware.models.Status;
+import com.ch.cbsmiddleware.models.VoucherReversalLog;
 import com.ch.cbsmiddleware.models.VoucherRequestLog;
 import com.ch.cbsmiddleware.repo.VoucherRequestLogRepo;
+import com.ch.cbsmiddleware.repo.VoucherReversalLogRepo;
 import com.ch.cbsmiddleware.service.CsvFileWriter;
-import com.ch.cbsmiddleware.service.VoucherRequestService;
+import com.ch.cbsmiddleware.service.VoucherService;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,9 +25,10 @@ import java.util.Map;
  */
 @Service
 @RequiredArgsConstructor
-public class VoucherRequestServiceImpl implements VoucherRequestService {
+public class VoucherServiceImpl implements VoucherService {
 
     private final VoucherRequestLogRepo voucherRequestLogRepo;
+    private final VoucherReversalLogRepo voucherReversalLogRepo;
     private final CsvFileWriter csvFileWriter;
     private final MyBatisConfig myBatisConfig;
 
@@ -67,5 +67,25 @@ public class VoucherRequestServiceImpl implements VoucherRequestService {
         return RequestVoucherData.builder()
                 .voucherNumber(voucherData.getVoucherNumber())
                 .build();
+    }
+
+    @Override
+    public String reverseVoucher(String cbsClientCode, String voucherNo) {
+        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(cbsClientCode);
+        SqlSession session = factory.openSession();
+
+        VoucherReversalLog voucherReversalLog = VoucherReversalLog.builder()
+                .voucherNo(voucherNo)
+                .status(Status.PENDING)
+                .build();
+
+//        VoucherData voucherData = session.selectOne("reverseVoucher", voucherNo);
+
+        voucherReversalLog.setStatus(Status.COMPLETED);
+
+        voucherReversalLogRepo.save(voucherReversalLog);
+        csvFileWriter.writeVoucherReversal(voucherReversalLog);
+
+        return voucherReversalLog.getVoucherNo();
     }
 }
