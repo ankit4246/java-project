@@ -7,7 +7,7 @@
             resultType="com.ch.cbsmiddleware.dto.response.ChequeRequestResponse"
             statementType="CALLABLE"
             parameterType="map">
-        {call Code_cheque_request(${cbsClientCode},${accountNumber})}
+        {call Code_cheque_request(#{cbsClientCode},#{accountNumber})}
     </select>
 
 

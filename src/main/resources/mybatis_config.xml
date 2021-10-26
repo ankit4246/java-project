@@ -26,5 +26,6 @@
         <mapper resource="mybatis/InternalFundTransferProcMapper.xml"/>
         <mapper resource="mybatis/CustomerDetailProcMapper.xml"/>
         <mapper resource="mybatis/ProductListProcMapper.xml"/>
+        <mapper resource="mybatis/VoucherRequestProcMapper.xml"/>
     </mappers>
 </configuration>

@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,30 +31,31 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
 
     @Override
     public VoucherData executeInternalFundTransfer(InternalFundTransferRequest request) {
-        //1. log this a pending
-        InternalFundTransfer persisted = internalFundTransferRepo.save(
-                InternalFundTransfer.buildFromRequest(request)
-        );
 
         SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(request.getCbsClientCode());
-
         SqlSession session = factory.openSession();
+
+
         Map<String, Object> params = new HashMap<>();
-        params.put("fromAccountNumber",request.getFromAccountNumber());
+        params.put("fromAccountNumber", request.getFromAccountNumber());
         params.put("toAccountNumber", request.getToAccountNumber());
         params.put("paymentAmount", request.getPaymentAmount());
         params.put("remarks", request.getRemarks());
         params.put("transactionTimestamp", request.getTransactionTimestamp());
 
+        System.out.println(params);
         VoucherData voucherData = session.selectOne("executeInternalFundTransfer", params);
-
+        //1. log this a pending
+        InternalFundTransfer persisted = internalFundTransferRepo.save(
+                InternalFundTransfer.buildFromRequest(request)
+        );
         //2. call proc
-        //String voucherNumber = "ABY839C";
-        String voucherNumber = voucherData.getVoucherNumber();
-
+        String voucherNumber = "12344";
+//        String voucherNumber = voucherData.getVoucherNumber();
+        System.out.println(voucherData);
 
         //3. if voucher is blank, mark as failed otherwise completed
-        if(voucherNumber.isBlank()){
+        if (voucherNumber.isBlank()) {
             persisted.setStatus(Status.FAILED);
             internalFundTransferRepo.save(persisted);
             csvFileWriter.writeInternalFundTransferDetail(persisted);
@@ -67,7 +69,7 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
 
         internalFundTransferRepo.save(persisted);
 
-//        csvFileWriter.writeInternalFundTransferDetail(persisted);
+        csvFileWriter.writeInternalFundTransferDetail(persisted);
 
         session.close();
 

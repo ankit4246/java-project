@@ -29,6 +29,6 @@ public class InternalFundTransferRequest{
     @NotBlank
     private String remarks;
     @NotNull
-    //@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp transactionTimestamp;
 }

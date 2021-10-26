@@ -1,8 +1,7 @@
 package com.ch.cbsmiddleware.controller;
 
 import com.ch.cbsmiddleware.dto.request.VoucherRequest;
-import com.ch.cbsmiddleware.dto.response.HttpResponse;
-import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
+import com.ch.cbsmiddleware.dto.request.VoucherRequestOld;
 import com.ch.cbsmiddleware.service.VoucherRequestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

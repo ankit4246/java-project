@@ -1,10 +1,13 @@
 package com.ch.cbsmiddleware.dto.request;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
@@ -15,8 +18,7 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class TransactionRequest {
+public class VoucherRequestOld {
     @NotBlank
     private String cbsClientCode;
 
@@ -26,28 +28,14 @@ public class TransactionRequest {
     @NotBlank
     private String accountNumber;
 
-    @Min(value = 1)
-    private int paymentAmount;
-
-    private String paymentGL;
+    private BigDecimal paymentAmount;
 
     @NotNull
     private Timestamp transactionTimestamp;
 
-    private String customerCommissionGL;
+    private BigDecimal customerCommissionAmount;
 
-    @Min(value = 0)
-    private int customerCommissionAmount;
-
-    private String gatewayCommissionGL;
-
-    @Min(value = 0)
-    private int gatewayCommissionAmount;
-
-    private String clientCommissionGL;
-
-    @Min(value = 0)
-    private int clientCommissionAmount;
+    private BigDecimal clientCommissionAmount;
 
     @NotBlank
     private String beneficiaryNumber;
@@ -56,6 +44,11 @@ public class TransactionRequest {
     private String remarks;
 
     @NotBlank
-    private String serviceCode;
+    private int serviceCode;
+
+    private String serviceType;
+
+    private String bankName;
+
 
 }

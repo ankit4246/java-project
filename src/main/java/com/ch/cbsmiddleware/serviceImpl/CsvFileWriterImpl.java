@@ -52,50 +52,10 @@ public class CsvFileWriterImpl implements CsvFileWriter {
     }
 
     @Override
-    public void writeTransactionDetail(TransactionDetail transactionDetail) {
-        String cvsPath = csvFileNameGenerator.generate(logMetaDataRepo, LogTypes.TRANSACTION_REQUEST);
-
-        String[] columnNames = new String[]{
-                "cbsClientCode",
-                "mobileNumber",
-                "accountNumber",
-                "beneficiaryNumber",
-                "paymentAmount",
-                "paymentGL",
-                "transactionTimestamp",
-                "customerCommissionGL",
-                "customerCommissionAmount",
-                "gatewayCommissionGL",
-                "gatewayCommissionAmount",
-                "clientCommissionGL",
-                "clientCommissionAmount",
-                "remarks",
-                "serviceCode",
-                "transactionId",
-                "voucherNumber",
-                "status"
-        };
-
-        appendData(cvsPath, columnNames, transactionDetail);
-    }
-
-    @Override
-    public void writeVoucherRequest(VoucherRequestLog voucherRequestLog) {
+    public void writeVoucherRequest(VoucherRequestLog voucherRequest) {
         String cvsPath = csvFileNameGenerator.generate(logMetaDataRepo, LogTypes.VOUCHER_REQUEST);
 
-        String[] columnNames = new String[]{
-                "cbsClientCode",
-                "mobileNumber",
-                "transactionId",
-                "transactionTimestamp",
-                "customerCommissionGL",
-                "customerCommissionAmount",
-                "clientCommissionGL",
-                "clientCommissionAmount",
-                "status"
-        };
-
-        appendData(cvsPath, columnNames, voucherRequestLog);
+        appendData(cvsPath, Fields.VOUCHER_REQUEST_LOG_FIELDS, voucherRequest);
 
     }
 }
