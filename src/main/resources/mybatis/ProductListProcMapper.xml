@@ -8,6 +8,4 @@
             statementType="CALLABLE">
         {call CODE_Product_list()}
     </select>
-
-
 </mapper>

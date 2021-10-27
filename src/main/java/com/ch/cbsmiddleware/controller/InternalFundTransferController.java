@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.sql.Timestamp;
 
 /**
  * @author bimal on 9/26/21
@@ -30,6 +31,16 @@ public class InternalFundTransferController extends BaseController{
     @ApiOperation(value = "Transfers fund between two A/Cs within the Client(Bank)")
     @PostMapping
     public ResponseEntity<?> executeInternalFundTransfer(@Valid @RequestBody InternalFundTransferRequest request){
+
+        System.out.println(request.getTransactionTimestamp());
+//
+//        System.out.println(request.getTransactionTimestamp().toString());
+//
+//        System.out.println(Timestamp.valueOf(request.getTransactionTimestamp().toString()));
+//        System.out.println("hello");
+
+//        return ResponseEntity.ok("hello");
+
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("fund.transfer.success", internalFundTransferService.executeInternalFundTransfer(request))
         );

@@ -1,6 +1,6 @@
 package com.ch.cbsmiddleware.repo;
 
-import com.ch.cbsmiddleware.models.InternalFundTransfer;
+import com.ch.cbsmiddleware.models.log.InternalFundTransferLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  * @project cbs-middleware
  */
 @Repository
-public interface InternalFundTransferRepo extends JpaRepository<InternalFundTransfer, Integer>{
+public interface InternalFundTransferRepo extends JpaRepository<InternalFundTransferLog, Integer>{
 }

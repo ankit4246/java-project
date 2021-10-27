@@ -2,7 +2,7 @@ package com.ch.cbsmiddleware.service;
 
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByClientCodeRequest;
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByCustomerCodeRequest;
-import com.ch.cbsmiddleware.dto.response.CustomerDetailResponse;
+import com.ch.cbsmiddleware.dto.response.CustomerData;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @Author mave on 9/26/21
  */
 public interface CustomerDetailService {
-     List<CustomerDetailResponse> getCustomerDetailByClientCode(CustomerDetailByClientCodeRequest customerDetailByCientCodeRequest);
+     List<CustomerData> getCustomerDetailByClientCode(CustomerDetailByClientCodeRequest customerDetailByCientCodeRequest);
 
-     CustomerDetailResponse getCustomerDetailByCustomerCode(CustomerDetailByCustomerCodeRequest customerDetailByCustomerCodeRequest);
+     CustomerData getCustomerDetailByCustomerCode(CustomerDetailByCustomerCodeRequest customerDetailByCustomerCodeRequest);
 }

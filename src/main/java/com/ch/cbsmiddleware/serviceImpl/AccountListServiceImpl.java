@@ -2,7 +2,7 @@ package com.ch.cbsmiddleware.serviceImpl;
 
 import com.ch.cbsmiddleware.config.MyBatisConfig;
 import com.ch.cbsmiddleware.dto.request.AccountListRequest;
-import com.ch.cbsmiddleware.dto.response.AccountListResponse;
+import com.ch.cbsmiddleware.dto.response.AccountData;
 import com.ch.cbsmiddleware.service.AccountListService;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
@@ -22,13 +22,13 @@ public class AccountListServiceImpl implements AccountListService {
     private final MyBatisConfig myBatisConfig;
 
     @Override
-    public List<AccountListResponse> getAccountListByCustomerCode(AccountListRequest accountListRequest) {
+    public List<AccountData> getAccountListByCustomerCode(AccountListRequest accountListRequest) {
 
             SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(accountListRequest.getCbsClientCode());
 
             SqlSession session = factory.openSession();
 
-            List<AccountListResponse> accounts = session.selectList("getAcountListByCustomerCode", accountListRequest.getCustomerCode());
+            List<AccountData> accounts = session.selectList("getAcountListByCustomerCode", accountListRequest.getCustomerCode());
 
             session.close();
 

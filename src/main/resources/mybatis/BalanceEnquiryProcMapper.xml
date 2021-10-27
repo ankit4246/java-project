@@ -4,13 +4,13 @@
 <mapper namespace="com.ch.cbsmiddleware.mapper.BalanceEnquiryProcMapper">
 
     <select id="getBalanceByCustomerCode"
-            resultType="com.ch.cbsmiddleware.dto.response.BalanceEnquiryByCustomerCodeResponse"
+            resultType="com.ch.cbsmiddleware.dto.response.BalanceData"
             statementType="CALLABLE">
         {call Code_balance_enquiry_by_customercode(#{customerCode})}
     </select>
 
     <select id="getBalanceByAccNumber"
-            resultType="com.ch.cbsmiddleware.dto.response.BalanceEnquiryByAccountNumberResponse"
+            resultType="com.ch.cbsmiddleware.dto.response.BalanceData"
             statementType="CALLABLE">
         {call Code_balance_enquiry_by_accountno(#{accNumber})}
     </select>
