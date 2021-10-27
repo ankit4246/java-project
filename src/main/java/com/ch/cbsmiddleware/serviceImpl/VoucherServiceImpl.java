@@ -2,14 +2,13 @@ package com.ch.cbsmiddleware.serviceImpl;
 
 import com.ch.cbsmiddleware.config.MyBatisConfig;
 import com.ch.cbsmiddleware.dto.request.VoucherRequest;
-import com.ch.cbsmiddleware.dto.response.RequestVoucherData;
 import com.ch.cbsmiddleware.dto.response.VoucherData;
-import com.ch.cbsmiddleware.models.Status;
-import com.ch.cbsmiddleware.models.VoucherReversalLog;
-import com.ch.cbsmiddleware.models.VoucherRequestLog;
+import com.ch.cbsmiddleware.constant.Status;
+import com.ch.cbsmiddleware.models.log.VoucherReversalLog;
+import com.ch.cbsmiddleware.models.log.VoucherRequestLog;
 import com.ch.cbsmiddleware.repo.VoucherRequestLogRepo;
 import com.ch.cbsmiddleware.repo.VoucherReversalLogRepo;
-import com.ch.cbsmiddleware.service.CsvFileWriter;
+import com.ch.cbsmiddleware.service.fileservice.CsvFileWriter;
 import com.ch.cbsmiddleware.service.VoucherService;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
@@ -33,7 +32,7 @@ public class VoucherServiceImpl implements VoucherService {
     private final MyBatisConfig myBatisConfig;
 
     @Override
-    public RequestVoucherData requestVoucher(VoucherRequest request) {
+    public VoucherData requestVoucher(VoucherRequest request) {
         SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(request.getCbsClientCode());
         SqlSession session = factory.openSession();
 
@@ -64,7 +63,7 @@ public class VoucherServiceImpl implements VoucherService {
         voucherRequestLogRepo.save(voucherRequestLog);
         csvFileWriter.writeVoucherRequest(voucherRequestLog);
 
-        return RequestVoucherData.builder()
+        return VoucherData.builder()
                 .voucherNumber(voucherData.getVoucherNumber())
                 .build();
     }

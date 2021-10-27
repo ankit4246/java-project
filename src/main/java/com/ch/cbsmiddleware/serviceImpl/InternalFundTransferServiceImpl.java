@@ -3,17 +3,16 @@ package com.ch.cbsmiddleware.serviceImpl;
 import com.ch.cbsmiddleware.config.MyBatisConfig;
 import com.ch.cbsmiddleware.dto.request.InternalFundTransferRequest;
 import com.ch.cbsmiddleware.dto.response.VoucherData;
-import com.ch.cbsmiddleware.models.InternalFundTransfer;
-import com.ch.cbsmiddleware.models.Status;
+import com.ch.cbsmiddleware.models.log.InternalFundTransferLog;
+import com.ch.cbsmiddleware.constant.Status;
 import com.ch.cbsmiddleware.repo.InternalFundTransferRepo;
-import com.ch.cbsmiddleware.service.CsvFileWriter;
+import com.ch.cbsmiddleware.service.fileservice.CsvFileWriter;
 import com.ch.cbsmiddleware.service.InternalFundTransferService;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,8 +45,8 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
         System.out.println(params);
         VoucherData voucherData = session.selectOne("executeInternalFundTransfer", params);
         //1. log this a pending
-        InternalFundTransfer persisted = internalFundTransferRepo.save(
-                InternalFundTransfer.buildFromRequest(request)
+        InternalFundTransferLog persisted = internalFundTransferRepo.save(
+                InternalFundTransferLog.buildFromRequest(request)
         );
         //2. call proc
         String voucherNumber = "12344";

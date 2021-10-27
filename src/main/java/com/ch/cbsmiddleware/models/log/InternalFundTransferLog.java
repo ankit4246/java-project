@@ -1,5 +1,6 @@
-package com.ch.cbsmiddleware.models;
+package com.ch.cbsmiddleware.models.log;
 
+import com.ch.cbsmiddleware.constant.Status;
 import com.ch.cbsmiddleware.dto.request.InternalFundTransferRequest;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -25,7 +26,7 @@ import java.sql.Timestamp;
                 "timestamp"
         })
 })
-public class InternalFundTransfer {
+public class InternalFundTransferLog {
     @Id
     @SequenceGenerator(name = "internal_fund_transfer_sequence_gen",
             sequenceName ="internal_fund_transfer_sequence",allocationSize = 1)
@@ -56,8 +57,8 @@ public class InternalFundTransfer {
     @Column(name = "status", nullable = false)
     private String status;
 
-    public static InternalFundTransfer buildFromRequest(InternalFundTransferRequest request){
-        InternalFundTransfer internalFundTransfer = InternalFundTransfer.builder()
+    public static InternalFundTransferLog buildFromRequest(InternalFundTransferRequest request){
+        InternalFundTransferLog internalFundTransfer = InternalFundTransferLog.builder()
                 .cbsClientCode(request.getCbsClientCode())
                 .fromAccountNumber(request.getFromAccountNumber())
                 .toAccountNumber(request.getToAccountNumber())

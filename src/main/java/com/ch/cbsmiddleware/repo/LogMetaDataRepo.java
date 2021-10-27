@@ -1,6 +1,6 @@
 package com.ch.cbsmiddleware.repo;
 
-import com.ch.cbsmiddleware.models.LogMetaData;
+import com.ch.cbsmiddleware.models.log.LogMetaData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

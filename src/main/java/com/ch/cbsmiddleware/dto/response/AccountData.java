@@ -14,17 +14,26 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @ToString
-public class BalanceEnquiryByCustomerCodeResponse {
+public class AccountData {
     @NotBlank
     @NotNull
     private String accountNumber;
+    @NotBlank
     @NotNull
-    private Integer availableBalance;
+    private String accountName;
+    @NotBlank
     @NotNull
-    private Integer ledgerBalance;
+    private String currancyCode;
+    @NotBlank
     @NotNull
-    private Integer InterestRate;
+    private String currancyName;
+    @NotBlank
+    @NotNull
+    private String branchCode;
     @NotBlank
     @NotNull
     private String accountStatus;
+    @NotBlank
+    @NotNull
+    private String accountType;
 }

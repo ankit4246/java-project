@@ -1,4 +1,4 @@
-package com.ch.cbsmiddleware.models;
+package com.ch.cbsmiddleware.models.log;
 
 import lombok.*;
 import lombok.experimental.Accessors;

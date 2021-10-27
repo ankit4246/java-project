@@ -1,9 +1,14 @@
 
-package com.ch.cbsmiddleware.serviceImpl;
+package com.ch.cbsmiddleware.serviceImpl.fileserviceimpl;
 
-import com.ch.cbsmiddleware.models.*;
+import com.ch.cbsmiddleware.constant.Fields;
+import com.ch.cbsmiddleware.constant.LogTypes;
+import com.ch.cbsmiddleware.models.log.ChequeRequestLog;
+import com.ch.cbsmiddleware.models.log.InternalFundTransferLog;
+import com.ch.cbsmiddleware.models.log.VoucherRequestLog;
+import com.ch.cbsmiddleware.models.log.VoucherReversalLog;
 import com.ch.cbsmiddleware.repo.LogMetaDataRepo;
-import com.ch.cbsmiddleware.service.CsvFileWriter;
+import com.ch.cbsmiddleware.service.fileservice.CsvFileWriter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +39,7 @@ public class CsvFileWriterImpl implements CsvFileWriter {
     }
 
     @Override
-    public void writeInternalFundTransferDetail(InternalFundTransfer internalFundTransfer) {
+    public void writeInternalFundTransferDetail(InternalFundTransferLog internalFundTransfer) {
         String cvsPath = csvFileNameGenerator.generate(logMetaDataRepo, LogTypes.INTERNAL_FUND_TRANSFER);
 
         String[] columnNames = new String[]{

@@ -3,8 +3,7 @@ package com.ch.cbsmiddleware.serviceImpl;
 import com.ch.cbsmiddleware.config.MyBatisConfig;
 import com.ch.cbsmiddleware.dto.request.BalanceEnquiryByAccountNumberRequest;
 import com.ch.cbsmiddleware.dto.request.BalanceEnquiryByCustomerCodeRequest;
-import com.ch.cbsmiddleware.dto.response.BalanceEnquiryByAccountNumberResponse;
-import com.ch.cbsmiddleware.dto.response.BalanceEnquiryByCustomerCodeResponse;
+import com.ch.cbsmiddleware.dto.response.BalanceData;
 import com.ch.cbsmiddleware.service.BalanceEnquiryService;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
@@ -22,31 +21,32 @@ import java.util.List;
 public class BalanceEnquiryServiceImpl implements BalanceEnquiryService {
 
     private final MyBatisConfig myBatisConfig;
-    @Override
-    public List<BalanceEnquiryByCustomerCodeResponse> getBalanceByCustomerCode(BalanceEnquiryByCustomerCodeRequest balanceEnquiryByCustomerCodeRequest) {
 
-        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(balanceEnquiryByCustomerCodeRequest.getCbsClientCode());
+    @Override
+    public List<BalanceData> getBalanceByCustomerCode(BalanceEnquiryByCustomerCodeRequest request) {
+
+        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(request.getCbsClientCode());
 
         SqlSession session = factory.openSession();
 
-        List<BalanceEnquiryByCustomerCodeResponse> accounts = session.selectList("getBalanceByCustomerCode", balanceEnquiryByCustomerCodeRequest.getCustomerCode());
+        List<BalanceData> balances = session.selectList("getBalanceByCustomerCode", request.getCustomerCode());
 
         session.close();
 
-        return accounts;
+        return balances;
     }
 
     @Override
-    public BalanceEnquiryByAccountNumberResponse getBalanceByAccountNumber(BalanceEnquiryByAccountNumberRequest balanceEnquiryByAccountNumberRequest) {
+    public BalanceData getBalanceByAccountNumber(BalanceEnquiryByAccountNumberRequest request) {
 
-        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(balanceEnquiryByAccountNumberRequest.getCbsClientCode());
+        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(request.getCbsClientCode());
 
         SqlSession session = factory.openSession();
 
-        BalanceEnquiryByAccountNumberResponse accounts = session.selectOne("getBalanceByAccNumber", balanceEnquiryByAccountNumberRequest.getAccountNumber());
+        BalanceData balances = session.selectOne("getBalanceByAccNumber", request.getAccountNumber());
 
         session.close();
 
-        return accounts;
+        return balances;
     }
 }

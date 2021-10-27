@@ -1,4 +1,4 @@
-package com.ch.cbsmiddleware.models;
+package com.ch.cbsmiddleware.constant;
 
 /**
  * @author bimal on 9/27/21

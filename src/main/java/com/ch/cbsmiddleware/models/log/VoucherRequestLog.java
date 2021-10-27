@@ -1,5 +1,7 @@
-package com.ch.cbsmiddleware.models;
+package com.ch.cbsmiddleware.models.log;
 
+import com.ch.cbsmiddleware.constant.Fields;
+import com.ch.cbsmiddleware.constant.Status;
 import com.ch.cbsmiddleware.dto.request.VoucherRequest;
 import lombok.*;
 import lombok.experimental.Accessors;

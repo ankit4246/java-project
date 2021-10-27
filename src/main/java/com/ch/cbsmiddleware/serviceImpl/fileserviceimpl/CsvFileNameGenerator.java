@@ -1,6 +1,6 @@
-package com.ch.cbsmiddleware.serviceImpl;
+package com.ch.cbsmiddleware.serviceImpl.fileserviceimpl;
 
-import com.ch.cbsmiddleware.models.LogMetaData;
+import com.ch.cbsmiddleware.models.log.LogMetaData;
 import com.ch.cbsmiddleware.repo.LogMetaDataRepo;
 import org.springframework.stereotype.Service;
 

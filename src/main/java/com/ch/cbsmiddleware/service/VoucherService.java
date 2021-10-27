@@ -1,7 +1,7 @@
 package com.ch.cbsmiddleware.service;
 
 import com.ch.cbsmiddleware.dto.request.VoucherRequest;
-import com.ch.cbsmiddleware.dto.response.RequestVoucherData;
+import com.ch.cbsmiddleware.dto.response.VoucherData;
 
 /**
  * @author bimal on 9/26/21
@@ -9,7 +9,7 @@ import com.ch.cbsmiddleware.dto.response.RequestVoucherData;
  */
 
 public interface VoucherService {
-    RequestVoucherData requestVoucher(VoucherRequest request);
+    VoucherData requestVoucher(VoucherRequest request);
 
     String reverseVoucher(String cbsClientCode, String voucherNo);
 }
