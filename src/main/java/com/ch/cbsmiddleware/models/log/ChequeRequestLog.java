@@ -2,7 +2,6 @@ package com.ch.cbsmiddleware.models.log;
 
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

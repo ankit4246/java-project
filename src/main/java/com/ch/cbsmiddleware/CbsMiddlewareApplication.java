@@ -1,6 +1,5 @@
 package com.ch.cbsmiddleware;
 
-import com.ch.cbsmiddleware.models.CbsDbConnectionDetail;
 import com.ch.cbsmiddleware.repo.CbsDbConnectionDetailRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;

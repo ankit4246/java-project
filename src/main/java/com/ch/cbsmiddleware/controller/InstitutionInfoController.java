@@ -1,11 +1,8 @@
 package com.ch.cbsmiddleware.controller;
 
-import com.ch.cbsmiddleware.dto.response.HttpResponse;
-import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.InstitutionInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
