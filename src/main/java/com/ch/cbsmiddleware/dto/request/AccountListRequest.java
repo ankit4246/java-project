@@ -1,7 +1,6 @@
 package com.ch.cbsmiddleware.dto.request;
 
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.Tag;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
