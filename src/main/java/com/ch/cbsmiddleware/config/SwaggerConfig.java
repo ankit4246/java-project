@@ -24,12 +24,12 @@ public class SwaggerConfig {
 
     private ApiInfo projectInfo(){
         return new ApiInfo(
-                "CBS-middleware API",
+                "Luniva CBS-middleware API",
                 "APIs for interacting with CBS",
                 "1.0",
-                "Undecided terms of use",
+                "",
                 "Code Himalaya",
-                "Undecided License",
+                "Code Himalaya License",
                 "https://codehimaya.com"
         );
     }
