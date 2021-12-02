@@ -4,7 +4,7 @@
 <mapper namespace="com.ch.cbsmiddleware.mapper.StatementMapper">
 
     <select id="getFullStatement"
-            resultType="com.ch.cbsmiddleware.dto.response.StatementData"
+            resultType="com.ch.cbsmiddleware.dto.response.FullStatementData"
             statementType="CALLABLE"
             parameterType="map">
         {call code_fullstatement_by_accountno(

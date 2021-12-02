@@ -23,11 +23,11 @@ public class FullStatementRequest {
     @NotNull
     private String accountNumber;
     @NotNull
-    private Date fromDate;
+    private String fromDate;
     @NotNull
-    private Date toDate;
+    private String toDate;
     @NotNull
-    private Integer pageLimit;
+    private String pageLimit;
     @NotNull
-    private Integer pageOffset;
+    private String pageOffset;
 }
