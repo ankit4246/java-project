@@ -2,7 +2,6 @@ package com.ch.cbsmiddleware.dto.response;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.Locale;

@@ -1,5 +1,6 @@
 package com.ch.cbsmiddleware.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.validation.constraints.Min;
@@ -16,7 +17,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class InternalFundTransferRequest {
+public class InternalFundTransferRequest{
     @NotBlank
     private String cbsClientCode;
     @NotBlank
@@ -28,5 +29,6 @@ public class InternalFundTransferRequest {
     @NotBlank
     private String remarks;
     @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp transactionTimestamp;
 }

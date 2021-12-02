@@ -1,12 +1,10 @@
 package com.ch.cbsmiddleware.dto.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
@@ -17,6 +15,7 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class VoucherRequest {
     @NotBlank
     private String cbsClientCode;
@@ -25,8 +24,29 @@ public class VoucherRequest {
     private String mobileNumber;
 
     @NotBlank
-    private String transactionId;
+    private String accountNumber;
+
+    private BigDecimal paymentAmount;
 
     @NotNull
     private Timestamp transactionTimestamp;
+
+    private BigDecimal customerCommissionAmount;
+
+    private BigDecimal clientCommissionAmount;
+
+    @NotBlank
+    private String beneficiaryNumber;
+
+    @NotBlank
+    private String remarks;
+
+    private String service;
+
+    private int serviceCode;
+
+    private String serviceType;
+
+    private String bankName;
+
 }

@@ -3,16 +3,13 @@ package com.ch.cbsmiddleware.serviceImpl;
 import com.ch.cbsmiddleware.config.MyBatisConfig;
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByClientCodeRequest;
 import com.ch.cbsmiddleware.dto.request.CustomerDetailByCustomerCodeRequest;
-import com.ch.cbsmiddleware.dto.response.BalanceEnquiryByCustomerCodeResponse;
-import com.ch.cbsmiddleware.dto.response.CustomerDetailByClientCodeResponse;
-import com.ch.cbsmiddleware.dto.response.CustomerDetailByCustomerCodeResponse;
+import com.ch.cbsmiddleware.dto.response.CustomerData;
 import com.ch.cbsmiddleware.service.CustomerDetailService;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,29 +23,29 @@ public class CustomerDetailServiceImpl implements CustomerDetailService {
     private final MyBatisConfig myBatisConfig;
 
     @Override
-    public CustomerDetailByCustomerCodeResponse getCustomerDetailByCustomerCode(CustomerDetailByCustomerCodeRequest customerDetailByCustomerCodeRequest) {
+    public CustomerData getCustomerDetailByCustomerCode(CustomerDetailByCustomerCodeRequest customerDetailByCustomerCodeRequest) {
         SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(customerDetailByCustomerCodeRequest.getCbsClientCode());
 
         SqlSession session = factory.openSession();
 
-        CustomerDetailByCustomerCodeResponse accounts = session.selectOne("getBalanceByCustomerCode", customerDetailByCustomerCodeRequest.getCustomerCode());
+        CustomerData customerDetail = session.selectOne("getCustomerDetailByCustomerCode", customerDetailByCustomerCodeRequest.getCustomerCode());
 
         session.close();
 
-        return accounts;
+        return customerDetail;
     }
 
     @Override
-    public List<CustomerDetailByClientCodeResponse> getCustomerDetailByClientCode(CustomerDetailByClientCodeRequest customerDetailByCientCodeRequest) {
+    public List<CustomerData> getCustomerDetailByClientCode(CustomerDetailByClientCodeRequest customerDetailByClientCodeRequest) {
 
-        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(customerDetailByCientCodeRequest.getCbsClientCode());
+        SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(customerDetailByClientCodeRequest.getCbsClientCode());
 
         SqlSession session = factory.openSession();
 
-        List<CustomerDetailByClientCodeResponse> accounts = session.selectList("getBalanceByCustomerCode", customerDetailByCientCodeRequest.getCbsClientCode());
+        List<CustomerData> customerDetails = session.selectList("getCustomerDetailByClientCode", customerDetailByClientCodeRequest.getCbsClientCode());
 
         session.close();
 
-        return accounts;
+        return customerDetails;
     }
 }

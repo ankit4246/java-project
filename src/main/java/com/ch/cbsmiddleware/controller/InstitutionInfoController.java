@@ -1,9 +1,8 @@
 package com.ch.cbsmiddleware.controller;
 
-import com.ch.cbsmiddleware.dto.response.HttpResponse;
-import com.ch.cbsmiddleware.dto.response.ResponseGenerator;
 import com.ch.cbsmiddleware.service.InstitutionInfoService;
-import lombok.AllArgsConstructor;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,19 +19,21 @@ import javax.validation.constraints.NotBlank;
 @RestController
 @RequestMapping("/institution")
 @RequiredArgsConstructor
+@Api(tags = "Institution APIs")
 public class InstitutionInfoController extends BaseController {
 
     private final InstitutionInfoService institutionInfoService;
 
-
+    @ApiOperation(value = "Lists branches of a Client")
     @GetMapping("/branch-list")
     public ResponseEntity<?> findBranchList(@NotBlank @RequestParam("cbsClientCode")String cbsClientCode){
-        System.out.println(institutionInfoService);
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse("retrieve.success","Branch List",
                         institutionInfoService.findBranchList(cbsClientCode))
         );
     }
+
+    @ApiOperation(value = "Get the Head office details of a Client")
     @GetMapping("/detail")
     public ResponseEntity<?> getInstitutionData(@NotBlank @RequestParam("cbsClientCode")String cbsClientCode){
         return ResponseEntity.ok(

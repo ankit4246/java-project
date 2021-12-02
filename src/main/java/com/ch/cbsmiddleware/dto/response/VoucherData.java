@@ -13,4 +13,5 @@ import lombok.*;
 @Builder
 public class VoucherData {
     private String voucherNumber;
+    private long transactionId;
 }

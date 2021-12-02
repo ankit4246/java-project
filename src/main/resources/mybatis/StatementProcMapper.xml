@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ch.cbsmiddleware.mapper.StatementMapper">
+
+    <select id="getFullStatement"
+            resultType="com.ch.cbsmiddleware.dto.response.StatementData"
+            statementType="CALLABLE"
+            parameterType="map">
+        {call code_fullstatement_by_accountno(
+                #{accountNumber},
+                #{fromDate},
+                #{toDate},
+                #{pageLimit},
+                #{pageOffset}
+            )
+            }
+    </select>
+
+    <select id="getMiniStatement"
+            resultType="com.ch.cbsmiddleware.dto.response.StatementData"
+            statementType="CALLABLE"
+            parameterType="map">
+        {call CODE_mini_statement(#{accountNumber},#{noOfTransactionCount})}
+    </select>
+
+</mapper>

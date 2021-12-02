@@ -1,6 +1,6 @@
 package com.ch.cbsmiddleware.repo;
 
-import com.ch.cbsmiddleware.models.ChequeRequestLog;
+import com.ch.cbsmiddleware.models.log.ChequeRequestLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
