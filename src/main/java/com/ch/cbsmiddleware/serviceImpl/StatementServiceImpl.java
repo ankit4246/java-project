@@ -41,6 +41,9 @@ public class StatementServiceImpl implements StatementService {
         params.put("pageOffset", fullStatementRequest.getPageOffset());
 
         List<FullStatementData> fullStatements = session.selectList("getFullStatement", params);
+        fullStatements.forEach(i->{
+                i.setTransactionType(i.getTransactionAmount() < 0?"Dr":"Cr") ;
+        });
         session.close();
 
         return fullStatements;
