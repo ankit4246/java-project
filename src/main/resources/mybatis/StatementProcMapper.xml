@@ -7,7 +7,7 @@
             resultType="com.ch.cbsmiddleware.dto.response.StatementData"
             statementType="CALLABLE"
             parameterType="map">
-        {call CODE_full_statement(
+        {call code_fullstatement_by_accountno(
                 #{accountNumber},
                 #{fromDate},
                 #{toDate},

@@ -42,7 +42,7 @@ public class CustomerDetailServiceImpl implements CustomerDetailService {
 
         SqlSession session = factory.openSession();
 
-        List<CustomerData> customerDetails = session.selectList("getCustomerDetailByClientCode", customerDetailByClientCodeRequest.getBranchCode());
+        List<CustomerData> customerDetails = session.selectList("getCustomerDetailByClientCode", customerDetailByClientCodeRequest.getCbsClientCode());
 
         session.close();
 

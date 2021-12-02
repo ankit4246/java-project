@@ -16,6 +16,6 @@ import java.math.BigDecimal;
 public class StatementData {
     private String miti;
     private String description;
-    private BigDecimal amount;
+    private Double amount;
     private String type;
 }

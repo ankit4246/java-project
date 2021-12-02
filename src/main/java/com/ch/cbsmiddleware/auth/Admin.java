@@ -18,6 +18,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "admin")
+
 public class Admin {
     @Id
     @SequenceGenerator(name = "admin_sequence_gen",

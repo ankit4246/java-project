@@ -15,9 +15,7 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class CustomerDetailByClientCodeRequest {
     @NotBlank
-    @NotNull
     private String cbsClientCode;
     private String branchCode;
     private String searchString;
-
 }

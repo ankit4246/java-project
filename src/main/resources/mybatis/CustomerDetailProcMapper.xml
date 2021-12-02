@@ -6,13 +6,13 @@
     <select id="getCustomerDetailByClientCode"
             resultType="com.ch.cbsmiddleware.dto.response.CustomerData"
             statementType="CALLABLE">
-        {call CODE_customer_dtl_by_Clientcode(#{branchCode})}
+        {call Code_customer_detail_by_clientcode(#{branchCode})}
     </select>
 
     <select id="getCustomerDetailByCustomerCode"
             resultType="com.ch.cbsmiddleware.dto.response.CustomerData"
             statementType="CALLABLE">
-        {call CODE_customer_dtl_by_customerCode(#{customerCode})}
+        {call Code_customer_detail_by_customercode(#{customerCode})}
     </select>
 
 </mapper>

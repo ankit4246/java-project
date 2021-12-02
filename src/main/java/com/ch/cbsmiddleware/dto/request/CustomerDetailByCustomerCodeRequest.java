@@ -1,5 +1,6 @@
 package com.ch.cbsmiddleware.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotNull;
 public class CustomerDetailByCustomerCodeRequest {
     @NotBlank
     @NotNull
+    @JsonProperty(value = "client_code")
     private String cbsClientCode;
     @NotBlank
     @NotNull

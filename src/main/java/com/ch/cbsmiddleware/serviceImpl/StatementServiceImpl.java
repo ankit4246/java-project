@@ -38,7 +38,6 @@ public class StatementServiceImpl implements StatementService {
         params.put("pageOffset", fullStatementRequest.getPageOffset());
 
         List<StatementData> fullStatements = session.selectList("getFullStatement", params);
-
         session.close();
 
         return fullStatements;

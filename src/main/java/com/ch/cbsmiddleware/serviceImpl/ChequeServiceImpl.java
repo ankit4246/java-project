@@ -57,7 +57,6 @@ public class ChequeServiceImpl implements ChequeService {
 
         chequeRequestRepo.save(chequeRequestLog);
 
-        //Write to a csv file
         csvFileWriter.writeChequeRequest(chequeRequestLog);
 
         return chequeRequestResponse;
@@ -74,7 +73,6 @@ public class ChequeServiceImpl implements ChequeService {
                 .status(Status.PENDING)
                 .build();
 
-        //Call a proc and on the basis of response set status
         SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(request.getCbsClientCode());
 
         SqlSession session = factory.openSession();
@@ -91,7 +89,6 @@ public class ChequeServiceImpl implements ChequeService {
 
         chequeRequestRepo.save(chequeRequestLog);
 
-        //Write to a csv file
         csvFileWriter.writeChequeRequest(chequeRequestLog);
 
         return chequeRequestResponse;

@@ -6,7 +6,7 @@
     <select id="getAcountListByCustomerCode"
             resultType="com.ch.cbsmiddleware.dto.response.AccountData"
     statementType="CALLABLE">
-        {call Code_accountlist_by_customercode(#{customerCode })}
+        {call Code_accountlist_by_customercode(#{customerCode})}
     </select>
 
 

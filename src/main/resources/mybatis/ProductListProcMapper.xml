@@ -6,6 +6,6 @@
     <select id="getProductList"
             resultType="com.ch.cbsmiddleware.dto.response.ProductData"
             statementType="CALLABLE">
-        {call CODE_Product_list()}
+        {call code_product_type_list()}
     </select>
 </mapper>

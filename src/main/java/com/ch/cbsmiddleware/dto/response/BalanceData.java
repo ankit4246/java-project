@@ -19,11 +19,11 @@ public class BalanceData {
     @NotNull
     private String accountNumber;
     @NotNull
-    private Integer availableBalance;
+    private Double availableBalance;
     @NotNull
-    private Integer ledgerBalance;
+    private Double ledgerBalance;
     @NotNull
-    private Integer InterestRate;
+    private Double InterestRate;
     @NotBlank
     @NotNull
     private String accountStatus;

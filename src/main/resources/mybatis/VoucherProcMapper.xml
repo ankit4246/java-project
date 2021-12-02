@@ -29,7 +29,7 @@
     <select id="reverseVoucher"
             resultType="com.ch.cbsmiddleware.dto.response.VoucherData"
             statementType="CALLABLE">
-        {call CODE_voucher_reverse( #{voucherNo} ) }
+        {call CODE_Voucher_reverse( #{voucherNo}) }
     </select>
 
 

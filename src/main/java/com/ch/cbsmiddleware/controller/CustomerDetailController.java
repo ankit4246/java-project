@@ -27,6 +27,7 @@ public class CustomerDetailController extends BaseController {
     @ApiOperation(value = "Lists Customer details on a specific Client")
     @PostMapping(value = "/client-code")
     public ResponseEntity<?> getCustomerDetailByClientCode(@Valid @RequestBody CustomerDetailByClientCodeRequest customerDetailRequest) {
+
         return ResponseEntity.ok(
                 responseGenerator.getSuccessResponse(
                         "retrieve.success","Customer Detail",
