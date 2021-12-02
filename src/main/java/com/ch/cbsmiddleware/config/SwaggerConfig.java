@@ -47,9 +47,9 @@ public class SwaggerConfig {
                 "CBS-middleware",
                 "APIs for interacting with CBS",
                 "1.0",
-                "Undecided terms of use",
+                "",
                 "Code Himalaya",
-                "Undecided License",
+                "Code Himalaya License",
                 "https://codehimaya.com"
         );
     }
