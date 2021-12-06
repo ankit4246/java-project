@@ -2,7 +2,8 @@ package com.ch.cbsmiddleware.service;
 
 import com.ch.cbsmiddleware.dto.request.FullStatementRequest;
 import com.ch.cbsmiddleware.dto.request.MiniStatementRequest;
-import com.ch.cbsmiddleware.dto.response.StatementData;
+import com.ch.cbsmiddleware.dto.response.statement.MiniStatementData;
+import com.ch.cbsmiddleware.dto.response.statement.FullStatementData;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @Author Om Narayan Singh on 9/26/21
  */
 public interface StatementService {
-    List<StatementData> getFullStatement(FullStatementRequest fullStatementRequest);
+    List<FullStatementData> getFullStatement(FullStatementRequest fullStatementRequest);
 
-    List<StatementData> getMiniStatement(MiniStatementRequest miniStatementRequest);
+    List<MiniStatementData> getMiniStatement(MiniStatementRequest miniStatementRequest);
 }

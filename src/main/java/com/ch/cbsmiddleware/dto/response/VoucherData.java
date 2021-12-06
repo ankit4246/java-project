@@ -1,5 +1,6 @@
 package com.ch.cbsmiddleware.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 /**
@@ -14,4 +15,5 @@ import lombok.*;
 public class VoucherData {
     private String voucherNumber;
     private long transactionId;
+
 }
