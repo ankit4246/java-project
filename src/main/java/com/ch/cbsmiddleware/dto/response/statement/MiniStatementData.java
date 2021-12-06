@@ -1,8 +1,6 @@
-package com.ch.cbsmiddleware.dto.response;
+package com.ch.cbsmiddleware.dto.response.statement;
 
 import lombok.*;
-
-import java.math.BigDecimal;
 
 /**
  * @Project cbs-middleware
@@ -13,9 +11,10 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @ToString
-public class StatementData {
+public class MiniStatementData {
     private String miti;
     private String description;
     private Double amount;
-    private String type;
+    private String  type;
+    private Double balance;
 }

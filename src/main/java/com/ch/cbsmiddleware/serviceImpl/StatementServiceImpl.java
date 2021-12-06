@@ -3,7 +3,8 @@ package com.ch.cbsmiddleware.serviceImpl;
 import com.ch.cbsmiddleware.config.MyBatisConfig;
 import com.ch.cbsmiddleware.dto.request.FullStatementRequest;
 import com.ch.cbsmiddleware.dto.request.MiniStatementRequest;
-import com.ch.cbsmiddleware.dto.response.StatementData;
+import com.ch.cbsmiddleware.dto.response.statement.MiniStatementData;
+import com.ch.cbsmiddleware.dto.response.statement.FullStatementData;
 import com.ch.cbsmiddleware.service.StatementService;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
@@ -25,7 +26,7 @@ public class StatementServiceImpl implements StatementService {
     private final MyBatisConfig myBatisConfig;
 
     @Override
-    public List<StatementData> getFullStatement(FullStatementRequest fullStatementRequest) {
+    public List<FullStatementData> getFullStatement(FullStatementRequest fullStatementRequest) {
         SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(fullStatementRequest.getCbsClientCode());
 
         SqlSession session = factory.openSession();
@@ -37,15 +38,14 @@ public class StatementServiceImpl implements StatementService {
         params.put("pageLimit", fullStatementRequest.getPageLimit());
         params.put("pageOffset", fullStatementRequest.getPageOffset());
 
-        List<StatementData> fullStatements = session.selectList("getFullStatement", params);
+        List<FullStatementData> fullStatements = session.selectList("getFullStatement", params);
         session.close();
 
         return fullStatements;
     }
 
-
     @Override
-    public List<StatementData> getMiniStatement(MiniStatementRequest miniStatementRequest) {
+    public List<MiniStatementData> getMiniStatement(MiniStatementRequest miniStatementRequest) {
         SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(miniStatementRequest.getCbsClientCode());
 
         SqlSession session = factory.openSession();
@@ -53,7 +53,7 @@ public class StatementServiceImpl implements StatementService {
         params.put("accountNumber", miniStatementRequest.getAccountNumber());
         params.put("noOfTransactionCount", miniStatementRequest.getNoOfTransactionCount());
 
-        List<StatementData> accounts = session.selectList("getMiniStatement", params);
+        List<MiniStatementData> accounts = session.selectList("getMiniStatement", params);
 
         session.close();
 

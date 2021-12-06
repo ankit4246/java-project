@@ -4,7 +4,7 @@
 <mapper namespace="com.ch.cbsmiddleware.mapper.StatementMapper">
 
     <select id="getFullStatement"
-            resultType="com.ch.cbsmiddleware.dto.response.StatementData"
+            resultType="com.ch.cbsmiddleware.dto.response.statement.FullStatementData"
             statementType="CALLABLE"
             parameterType="map">
         {call code_fullstatement_by_accountno(
@@ -18,7 +18,7 @@
     </select>
 
     <select id="getMiniStatement"
-            resultType="com.ch.cbsmiddleware.dto.response.StatementData"
+            resultType="com.ch.cbsmiddleware.dto.response.statement.MiniStatementData"
             statementType="CALLABLE"
             parameterType="map">
         {call CODE_mini_statement(#{accountNumber},#{noOfTransactionCount})}

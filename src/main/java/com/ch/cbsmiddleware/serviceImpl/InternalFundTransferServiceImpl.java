@@ -34,7 +34,6 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
         SqlSessionFactory factory = myBatisConfig.getSqlSessionFactory(request.getCbsClientCode());
         SqlSession session = factory.openSession();
 
-
         Map<String, Object> params = new HashMap<>();
         params.put("fromAccountNumber", request.getFromAccountNumber());
         params.put("toAccountNumber", request.getToAccountNumber());
@@ -42,25 +41,31 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
         params.put("remarks", request.getRemarks());
         params.put("transactionTimestamp", request.getTransactionTimestamp());
 
-        System.out.println(params);
+        System.out.println("params: "+params);
         VoucherData voucherData = session.selectOne("executeInternalFundTransfer", params);
+
+        /*if(voucherData.getVoucherNumber() == null){
+            throw new NullPointerException("Voucher number is null!!");
+        }*/
+        System.out.println(InternalFundTransferLog.buildFromRequest(request));
         //1. log this a pending
         InternalFundTransferLog persisted = internalFundTransferRepo.save(
                 InternalFundTransferLog.buildFromRequest(request)
         );
-        //2. call proc
-        String voucherNumber = "12344";
-//        String voucherNumber = voucherData.getVoucherNumber();
-        System.out.println(voucherData);
+
+        //2. call proc | until IFT proc returns voucherNumber
+        String voucherNumber = "234ASDF";
+        //String voucherNumber = voucherData.getVoucherNumber();
+
 
         //3. if voucher is blank, mark as failed otherwise completed
         if (voucherNumber.isBlank()) {
             persisted.setStatus(Status.FAILED);
             internalFundTransferRepo.save(persisted);
             csvFileWriter.writeInternalFundTransferDetail(persisted);
-            throw new RuntimeException(); //TODO: Make custom exception TransactionFailure
+            throw new RuntimeException();
+            //TODO: Make custom exception TransactionFailure
         }
-
 
         persisted
                 .setStatus(Status.COMPLETED)
