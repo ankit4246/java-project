@@ -66,7 +66,7 @@ public class InternalFundTransferLog {
                 .toAccountNumber(request.getToAccountNumber())
                 .paymentAmount(request.getPaymentAmount())
                 .remarks(request.getRemarks())
-                .timestamp(request.getTransactionTimestamp())
+                .timestamp(new Timestamp(System.currentTimeMillis()))
                 .status(Status.PENDING)
                 .build();
         return internalFundTransfer;

@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +40,7 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
         params.put("toAccountNumber", request.getToAccountNumber());
         params.put("paymentAmount", request.getPaymentAmount());
         params.put("remarks", request.getRemarks());
-        params.put("transactionTimestamp", request.getTransactionTimestamp());
+        params.put("transactionTimestamp", new Timestamp(System.currentTimeMillis()));
 
         VoucherData voucherData = session.selectOne("executeInternalFundTransfer", params);
 
