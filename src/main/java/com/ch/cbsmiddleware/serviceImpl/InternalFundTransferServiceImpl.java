@@ -41,13 +41,8 @@ public class InternalFundTransferServiceImpl implements InternalFundTransferServ
         params.put("remarks", request.getRemarks());
         params.put("transactionTimestamp", request.getTransactionTimestamp());
 
-        System.out.println("params: "+params);
         VoucherData voucherData = session.selectOne("executeInternalFundTransfer", params);
 
-        /*if(voucherData.getVoucherNumber() == null){
-            throw new NullPointerException("Voucher number is null!!");
-        }*/
-        System.out.println(InternalFundTransferLog.buildFromRequest(request));
         //1. log this a pending
         InternalFundTransferLog persisted = internalFundTransferRepo.save(
                 InternalFundTransferLog.buildFromRequest(request)
